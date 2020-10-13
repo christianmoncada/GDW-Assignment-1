@@ -1,35 +1,73 @@
 #include "BackEnd.h"
-Player::Player()
-{
-}
-
-Player::Player(parameters)
-{
-	InitPlayer();
-}
-
-void Player::Update()
-{
-}
-
-void Player::MovementUpdate()
-{
-}
+using namespace std;
 
 class Player
 {
 public:
 	Player();
-	Player(parameters);
+	Player(int number, int& position);
 
-	void InitPlayer()
-	{
-		
-	}
+	void InitPlayer(int number, int& position);
+	
 
-	void Update();
-	void MovementUpdate();
-
-
+	void ForceMovement(int n);
+	void MovementUpdate(int diceroll);
+	int rollDice();
+private:
+	int m_num = 0;
+	int m_pos = 0;
+	bool is_trapped = false;
+	bool is_boost = false;
 };
+Player::Player()
+{
+}
+
+Player::Player(int number, int& position)
+{
+	InitPlayer(number, position;
+}
+void Player::InitPlayer(int number, int& position)
+{
+	m_num = number;
+	m_pos = position;
+
+	
+}
+void Player::ForceMovement(int n)
+{
+	m_pos += n;
+}
+
+void Player::MovementUpdate(int diceroll)
+{
+	for (int i = 0; i < diceroll; i++)
+	{
+		m_pos++;
+		if (board.position == occupied)
+		{
+			char ans;
+			cout << "Does player " << m_num << " want to battle player " << board.position.player << " ?" << endl;
+			cin >> ans;
+			if (ans == 'Y' || ans == 'y')
+			{
+				Sabotage(self, board.position.player);
+				break;
+			}
+		}
+	}
+	if (board.position.isTrap)
+	{
+		is_trapped = true;
+	}
+	if (board.position.isBoost)
+	{
+		is_boost = true;
+	}
+}
+int Player::rollDice()
+{
+	//implement dice rolling mechanic
+
+}
 
