@@ -78,20 +78,27 @@ void Player::MovementUpdate(int dice)
 }
 int Player::rollDice()
 {
+	int diceroll = 0;
 	srand(time(0));
 	if (is_boost == true)
+	{
 		for (int i = 0; i < 2; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
 			cout << dice << endl;
+			diceroll += dice;
 		}
+	}
 	else if (is_boost == false)
-	for (int i = 0; i < 1; i++)
 	{
-		int dice = (int)(1 + rand() % 6);
-		cout << dice << endl;
+		for (int i = 0; i < 1; i++)
+		{
+			int dice = (int)(1 + rand() % 6);
+			cout << dice << endl;
+			diceroll += dice;
+		}
 	}
 	is_boost = false;
-	return 0;
+	return diceroll;
 }
 
