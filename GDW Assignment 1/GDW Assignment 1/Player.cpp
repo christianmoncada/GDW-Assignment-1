@@ -1,4 +1,3 @@
-#include "BackEnd.h"
 using namespace std;
 
 class Player
@@ -13,7 +12,7 @@ public:
 	void ForceMovement(int n);
 	void MovementUpdate(int diceroll);
 	int rollDice();
-private:
+	private:
 	int m_num = 0;
 	int m_pos = 0;
 	bool is_trapped = false;
@@ -77,7 +76,18 @@ void Player::MovementUpdate(int diceroll)
 }
 int Player::rollDice()
 {
-	//implement dice rolling mechanic
+	// Declaration of variables
+	int roll;
+	int min = 1; // the min number a die can roll is 1
+	int max = 6; // the max value is the die size
+
+	unsigned seed;
+	seed = time(0);
+	srand(seed);
+
+	roll = rand() % (max - min + 1) + min;
+
+	return roll;
 
 }
 
