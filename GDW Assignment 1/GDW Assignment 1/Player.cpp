@@ -48,10 +48,20 @@ void Player::MovementUpdate(int diceroll)
 		{
 			char ans;
 			cout << "Does player " << m_num << " want to battle player " << board.position.player << " ?" << endl;
+			cout << "Enter y for yes, anything else for no." << endl;
 			cin >> ans;
 			if (ans == 'Y' || ans == 'y')
 			{
 				Sabotage(self, board.position.player);
+				//if (winner == m_num) //player won the duel
+				//{
+				//	ForceMovement(5);
+				//	board.update()
+				//}
+				//else //player did not win
+				//{
+				//	ForceMovement(-())
+				//}
 				break;
 			}
 		}
