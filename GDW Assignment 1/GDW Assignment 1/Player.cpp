@@ -1,7 +1,5 @@
-using namespace std;
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include "Player.h"
+
 class Player
 {
 public:
@@ -26,7 +24,7 @@ Player::Player()
 
 Player::Player(int number, int& position)
 {
-	InitPlayer(number, position;
+	InitPlayer(number, position);
 }
 void Player::InitPlayer(int number, int& position)
 {
@@ -45,7 +43,7 @@ void Player::MovementUpdate(int diceroll)
 	for (int i = 0; i < diceroll; i++)
 	{
 		m_pos++;
-		if (board.position == occupied)
+		if (pos1 == occupied)
 		{
 			char ans;
 			cout << "Does player " << m_num << " want to battle player " << board.position.player << " ?" << endl;

@@ -1,15 +1,16 @@
 ﻿  Board.cpp
   Game.cpp
+  MainMenu.cpp
   Player.cpp
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(29,29): error C2143: syntax error: missing ')' before ';'
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(48,7): error C2065: 'board': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(48,25): error C2065: 'occupied': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(51,68): error C2065: 'board': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(56,14): error C2065: 'self': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(56,20): error C2065: 'board': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(56,5): error C3861: 'Sabotage': identifier not found
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(70,6): error C2065: 'board': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(74,6): error C2065: 'board': undeclared identifier
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(81,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,7): error C2065: 'pos1': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,15): error C2065: 'occupied': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(49,68): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,14): error C2065: 'self': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,20): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,5): error C3861: 'Sabotage': identifier not found
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(68,6): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(72,6): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(79,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Sabotage.cpp
   Generating Code...
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(5): error C4716: 'c': must return a value
