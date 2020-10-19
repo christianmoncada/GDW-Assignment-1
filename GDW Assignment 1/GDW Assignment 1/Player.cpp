@@ -42,6 +42,7 @@ void Player::ForceMovement(int n)
 
 void Player::MovementUpdate(int dice)
 {
+	int oldPos = m_pos;
 	for (int i = 0; i < dice; i++)
 	{
 		m_pos++;
@@ -67,14 +68,16 @@ void Player::MovementUpdate(int dice)
 			}
 		}
 	}
-	if (board.position.isTrap)
+	if (board.position.isTrap)//is this position a trap
 	{
 		is_trapped = true;
 	}
-	if (board.position.isBoost)
+	if (board.position.isBoost)//is this position a boost
 	{
 		is_boost = true;
 	}
+	board.position(m_pos).addPlayer(self); //let the board know the new position of the player
+	board.position(oldPos).removePlayer(self)//let the board know that the player is moved
 }
 int Player::rollDice()
 {
