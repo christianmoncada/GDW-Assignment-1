@@ -1,2 +1,19 @@
 ﻿  GDW Assignment 1.cpp
-  GDW Assignment 1.vcxproj -> F:\GitHub\GDW Assignment 1\GDW Assignment 1\x64\Debug\GDW Assignment 1.exe
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\GDW Assignment 1.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(27,29): error C2143: syntax error: missing ')' before ';'
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,7): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,25): error C2065: 'occupied': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(49,4): error C2065: 'cout': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(49,68): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(49,101): error C2065: 'endl': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(50,4): error C2065: 'cout': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(50,56): error C2065: 'endl': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(51,4): error C2065: 'cin': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,14): error C2065: 'self': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,20): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,5): error C3861: 'Sabotage': identifier not found
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(68,6): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(72,6): error C2065: 'board': undeclared identifier
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(85,9): error C3861: 'time': identifier not found
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(86,2): error C3861: 'srand': identifier not found
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(88,9): error C3861: 'rand': identifier not found
