@@ -1,5 +1,7 @@
 using namespace std;
-
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 class Player
 {
 public:
@@ -76,18 +78,12 @@ void Player::MovementUpdate(int diceroll)
 }
 int Player::rollDice()
 {
-	// Declaration of variables
-	int roll;
-	int min = 1; // the min number a die can roll is 1
-	int max = 6; // the max value is the die size
-
-	unsigned seed;
-	seed = time(0);
-	srand(seed);
-
-	roll = rand() % (max - min + 1) + min;
-
-	return roll;
-
+		srand(time(0));
+		for (int i = 0; i < 1; i++)
+		{
+			int dice = (int)(1 + rand() % 6);
+			cout << dice << endl;
+		}
+		return 0;
 }
 
