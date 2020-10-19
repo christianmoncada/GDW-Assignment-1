@@ -38,9 +38,10 @@ void Player::ForceMovement(int n)
 	m_pos += n;
 }
 
-void Player::MovementUpdate(int diceroll)
+void Player::MovementUpdate(int dice)
 {
-	for (int i = 0; i < diceroll; i++)
+	int oldPos = m_pos;
+	for (int i = 0; i < dice; i++)
 	{
 		m_pos++;
 		if (pos1 == occupied)
@@ -65,23 +66,40 @@ void Player::MovementUpdate(int diceroll)
 			}
 		}
 	}
-	if (board.position.isTrap)
+	if (board.position.isTrap)//is this position a trap
 	{
 		is_trapped = true;
 	}
-	if (board.position.isBoost)
+	if (board.position.isBoost)//is this position a boost
 	{
 		is_boost = true;
 	}
+	board.position(m_pos).addPlayer(self); //let the board know the new position of the player
+	board.position(oldPos).removePlayer(self)//let the board know that the player is moved
 }
 int Player::rollDice()
 {
-		srand(time(0));
+	int diceroll = 0;
+	srand(time(0));
+	if (is_boost == true)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			int dice = (int)(1 + rand() % 6);
+			cout << dice << endl;
+			diceroll += dice;
+		}
+	}
+	else if (is_boost == false)
+	{
 		for (int i = 0; i < 1; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
 			cout << dice << endl;
+			diceroll += dice;
 		}
-		return 0;
+	}
+	is_boost = false;
+	return diceroll;
 }
 
