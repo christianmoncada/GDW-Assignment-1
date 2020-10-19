@@ -40,9 +40,9 @@ void Player::ForceMovement(int n)
 	m_pos += n;
 }
 
-void Player::MovementUpdate(int diceroll)
+void Player::MovementUpdate(int dice)
 {
-	for (int i = 0; i < diceroll; i++)
+	for (int i = 0; i < dice; i++)
 	{
 		m_pos++;
 		if (board.position == occupied)
@@ -78,12 +78,20 @@ void Player::MovementUpdate(int diceroll)
 }
 int Player::rollDice()
 {
-		srand(time(0));
-		for (int i = 0; i < 1; i++)
+	srand(time(0));
+	if (is_boost == true)
+		for (int i = 0; i < 2; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
 			cout << dice << endl;
 		}
-		return 0;
+	else if (is_boost == false)
+	for (int i = 0; i < 1; i++)
+	{
+		int dice = (int)(1 + rand() % 6);
+		cout << dice << endl;
+	}
+	is_boost = false;
+	return 0;
 }
 
