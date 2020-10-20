@@ -1,16 +1,9 @@
 ﻿  Board.cpp
   Game.cpp
-  MainMenu.cpp
+  main.cpp
   Player.cpp
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,7): error C2065: 'pos1': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(46,15): error C2065: 'occupied': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(49,68): error C2065: 'board': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,14): error C2065: 'self': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,20): error C2065: 'board': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(54,5): error C3861: 'Sabotage': identifier not found
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(68,6): error C2065: 'board': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(72,6): error C2065: 'board': undeclared identifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(79,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(33,69): error C3867: 'Player::p_colour': non-standard syntax; use '&' to create a pointer to member
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Sabotage.cpp
   Generating Code...
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(5): error C4716: 'c': must return a value
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.cpp(5): error C4716: 'UpdateBoard': must return a value
