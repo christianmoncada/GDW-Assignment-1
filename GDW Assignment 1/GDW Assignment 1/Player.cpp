@@ -1,6 +1,7 @@
 #include "Player.h"
 int position = 1;
 
+
 Player::Player()
 {
 }
@@ -27,10 +28,10 @@ void Player::MovementUpdate(int dice)
 	for (int i = 0; i < dice; i++)
 	{
 		p_pos++;
-		if (Game::occupied)
+		if (Game::isOccupied)
 		{
 			char ans;
-			cout << "Does player " << p_colour(p_num) << " want to battle " << "colour"/*p_colour()*/ <<"player?" << endl;
+			cout << "Does player " << p_colour(p_num) << " want to battle " << "[other colour]"/*p_colour()*/ <<"player?" << endl;
 			cout << "Enter y for yes, anything else for no." << endl;
 			cin >> ans;
 			if (ans == 'Y' || ans == 'y')

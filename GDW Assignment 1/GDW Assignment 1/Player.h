@@ -23,6 +23,7 @@ public:
 		if (p_num == 2) return "Green";
 		if (p_num == 3) return "Blue";
 		if (p_num == 4) return "Yellow";
+		return "ERROR";
 	}
 private:
 	int p_num = 0;

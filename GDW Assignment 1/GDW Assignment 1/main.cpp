@@ -3,6 +3,6 @@
 
 int main()
 {
-	Game::occupied = false;
-	ghjh
+	Game::isOccupied = false;
+	//std::string UpdateBoard();
 }
