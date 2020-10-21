@@ -1,5 +1,6 @@
 #include "Player.h"
 int position = 1;
+
 bool Game::isOccupied = false;
 
 Player::Player()
@@ -51,11 +52,11 @@ void Player::MovementUpdate(int dice)
 		}
 	}
 	
-	if (Board::isTrap(position))//is this position a trap
+	if (Board::isTrap(p_pos))//is this position a trap
 	{
 		onTrap = true;
 	}
-	if (Board::isBoost(position))//is this position a boost
+	if (Board::isBoost(p_pos))//is this position a boost
 	{
 		onBoost = true;
 	}
@@ -90,4 +91,13 @@ int Player::rollDice()
 		onTrap = false;
 	}
 	return diceroll;
+}
+
+std::string Player::p_colour(int p_num)
+{
+	f(p_num == 1) return "Red";
+	if (p_num == 2) return "Green";
+	if (p_num == 3) return "Blue";
+	if (p_num == 4) return "Yellow";
+	return "ERROR";
 }

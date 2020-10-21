@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
+
 
 class Board {
 public:
@@ -31,6 +31,7 @@ public:
 		}
 		else { return false; }
 	}
+	std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
 };
 
 /*
