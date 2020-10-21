@@ -1,6 +1,6 @@
 #include "Player.h"
 int position = 1;
-
+bool Game::isOccupied = false;
 
 Player::Player()
 {
