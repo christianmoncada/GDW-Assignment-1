@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Player.cpp
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(68,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Sabotage.cpp
-  Generating Code...
-main.obj : error LNK2001: unresolved external symbol "public: static bool Game::isOccupied" (?isOccupied@Game@@2_NA)
-Player.obj : error LNK2001: unresolved external symbol "public: static bool Game::isOccupied" (?isOccupied@Game@@2_NA)
-F:\GitHub\GDW-Assignment-1\GDW Assignment 1\x64\Debug\Dirty Derby.exe : fatal error LNK1120: 1 unresolved externals
-=======
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Player.cpp
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(68,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
   GDW Assignment 1.vcxproj -> F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\x64\Debug\Dirty Derby.exe
->>>>>>> Stashed changes

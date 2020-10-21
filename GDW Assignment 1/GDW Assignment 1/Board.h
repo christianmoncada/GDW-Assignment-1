@@ -2,10 +2,11 @@
 #include <iostream>
 #include <string>
 
-std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
 
 class Board {
 public:
+	
+	std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
 	/*
 	1 = Red
 	2 = Green

@@ -74,7 +74,6 @@ int Player::rollDice()
 			cout << dice << endl;
 			diceroll += dice;
 		}
-		onBoost = false;
 	}
 	else if (!onBoost && !onTrap)
 	{
@@ -85,9 +84,7 @@ int Player::rollDice()
 			diceroll += dice;
 		}
 	}
-	else if (onTrap)
-	{
-		onTrap = false;
-	}
+	//is_boost = false;
 	return diceroll;
 }
+
