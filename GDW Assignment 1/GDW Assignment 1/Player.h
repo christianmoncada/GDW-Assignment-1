@@ -18,13 +18,7 @@ public:
 	void ForceMovement(int n);
 	void MovementUpdate(int diceroll);
 	int rollDice();
-	std::string p_colour(int p_num) {
-		if (p_num == 1) return "Red";
-		if (p_num == 2) return "Green";
-		if (p_num == 3) return "Blue";
-		if (p_num == 4) return "Yellow";
-		return "ERROR";
-	}
+	std::string p_colour(int p_num);
 private:
 	int p_num = 0;
 	int p_pos = 0;
