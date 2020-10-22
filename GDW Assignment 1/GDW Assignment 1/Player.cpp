@@ -1,22 +1,31 @@
 #include "Player.h"
 int position = 1;
+#include "Board.h"
 
-bool Game::isOccupied = false;
+//bool Game::isOccupied = false;
 
 Player::Player()
 {
 }
 
-Player::Player(int number, int& position)
+Player::Player(int number, int& position, Board& board)
 {
-	InitPlayer(number, position);
+	InitPlayer(number, position, board);
 }
-void Player::InitPlayer(int number, int& position)
+void Player::InitPlayer(int number, int& position, Board& board)
 {
 	p_num = number;
 	p_pos = position;
-
+	theBoard = board;
 	
+}
+int Player::GetPosition()
+{
+	return p_pos;
+}
+int Player::GetNumber()
+{
+	return p_num;
 }
 void Player::ForceMovement(int n)
 {
@@ -29,7 +38,7 @@ void Player::MovementUpdate(int dice)
 	for (int i = 0; i < dice; i++)
 	{
 		p_pos++;
-		if (Game::isOccupied)
+		if (theBoard.isOccupied(p_pos, p_num))
 		{
 			char ans;
 			cout << "Does player " << p_colour(p_num) << " want to battle " << "[other colour]"/*p_colour()*/ <<"player?" << endl;
@@ -52,14 +61,15 @@ void Player::MovementUpdate(int dice)
 		}
 	}
 	
-	if (Board::isTrap(p_pos))//is this position a trap
+	if (theBoard.isTrap(p_pos))//is this position a trap
 	{
 		onTrap = true;
 	}
-	if (Board::isBoost(p_pos))//is this position a boost
+	if (theBoard.isBoost(p_pos))//is this position a boost
 	{
 		onBoost = true;
 	}
+	theBoard.changePos(p_pos, p_num);
 	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player
 	//board.position(oldPos).removePlayer(self)//let the board know that the player is moved
 }
