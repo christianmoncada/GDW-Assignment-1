@@ -10,9 +10,9 @@ class Player
 {
 public:
 	Player();
-	Player(int number, int& position, Board& board);
+	Player(int number, int position, Board& board);
 
-	void InitPlayer(int number, int& position, Board& board);
+	void InitPlayer(int number, int position, Board& board);
 
 
 	void ForceMovement(int n);

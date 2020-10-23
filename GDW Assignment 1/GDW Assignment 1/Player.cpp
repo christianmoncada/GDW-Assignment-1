@@ -1,18 +1,15 @@
 #include "Player.h"
-int position = 1;
 #include "Board.h"
-
-//bool Game::isOccupied = false;
 
 Player::Player()
 {
 }
 
-Player::Player(int number, int& position, Board& board)
+Player::Player(int number, int position, Board& board)
 {
 	InitPlayer(number, position, board);
 }
-void Player::InitPlayer(int number, int& position, Board& board)
+void Player::InitPlayer(int number, int position, Board& board)
 {
 	p_num = number;
 	p_pos = position;
@@ -101,7 +98,7 @@ int Player::rollDice()
 
 std::string Player::p_colour(int p_num)
 {
-	f(p_num == 1) return "Red";
+	if(p_num == 1) return "Red";
 	if (p_num == 2) return "Green";
 	if (p_num == 3) return "Blue";
 	if (p_num == 4) return "Yellow";
