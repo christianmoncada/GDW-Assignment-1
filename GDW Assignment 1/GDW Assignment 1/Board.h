@@ -2,13 +2,14 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-#include "Game.h"
+
 
 
 class Board {
 public:
 	
 	void UpdateBoard(int pos1, int pos2, int pos3, int pos4);
+	static void resetCur(int y = -5, int x = 0);
 	/*
 	1 = Red
 	2 = Green

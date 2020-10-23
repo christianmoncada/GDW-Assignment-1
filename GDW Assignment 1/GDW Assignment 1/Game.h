@@ -7,5 +7,5 @@ class Game {
 public:
 	static bool isOccupied;
 
-	static void resetCur(int y = 5, int x = 0);
+	
 };
