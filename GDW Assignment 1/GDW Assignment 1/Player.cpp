@@ -26,11 +26,24 @@ int Player::GetNumber()
 }
 void Player::ForceMovement(int n)
 {
+	//makes sure position isnt negative
+	if (p_pos - n <= 0)
+	{
+		p_pos = 0;
+		return;
+	}
 	p_pos += n;
 }
 
 void Player::MovementUpdate(int dice)
 {
+	//stops if on trap
+	if (onTrap)
+	{
+		onTrap = false;
+		return;
+	}
+
 	int oldPos = p_pos;
 	for (int i = 0; i < dice; i++)
 	{
@@ -38,7 +51,7 @@ void Player::MovementUpdate(int dice)
 		if (theBoard.isOccupied(p_pos, p_num))
 		{
 			char ans;
-			cout << "Does player " << p_colour(p_num) << " want to battle " << "[other colour]"/*p_colour()*/ <<"player?" << endl;
+			cout << "Does player " << p_colour(p_num) << " want to battle player " << theBoard.getPlayer(p_pos, p_num) <<"?" << endl;
 			cout << "Enter y for yes, anything else for no." << endl;
 			cin >> ans;
 			if (ans == 'Y' || ans == 'y')
@@ -60,12 +73,15 @@ void Player::MovementUpdate(int dice)
 	
 	if (theBoard.isTrap(p_pos))//is this position a trap
 	{
+		std::cout << "Landed on a trap!" << std::endl;
 		onTrap = true;
 	}
 	if (theBoard.isBoost(p_pos))//is this position a boost
 	{
+		std::cout << "Landed on a boost!" << std::endl;
 		onBoost = true;
 	}
+	//might not be needed
 	theBoard.changePos(p_pos, p_num);
 	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player
 	//board.position(oldPos).removePlayer(self)//let the board know that the player is moved
@@ -79,7 +95,7 @@ int Player::rollDice()
 		for (int i = 0; i < 2; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
-			cout << dice << endl;
+			//cout << dice << endl;
 			diceroll += dice;
 		}
 	}
@@ -88,7 +104,7 @@ int Player::rollDice()
 		for (int i = 0; i < 1; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
-			cout << dice << endl;
+			//cout << dice << endl;
 			diceroll += dice;
 		}
 	}
