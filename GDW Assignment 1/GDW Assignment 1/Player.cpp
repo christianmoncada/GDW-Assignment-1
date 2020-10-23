@@ -1,8 +1,5 @@
 #include "Player.h"
-int position = 1;
 #include "Board.h"
-
-//bool Game::isOccupied = false;
 
 Player::Player()
 {
