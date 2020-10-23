@@ -1,3 +1,15 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Board.cpp
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(35,65): error C2535: 'std::string Board::UpdateBoard(int,int,int,int)': member function already defined or declared
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(9): message : see declaration of 'Board::UpdateBoard'
+  Game.cpp
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(35,65): error C2535: 'std::string Board::UpdateBoard(int,int,int,int)': member function already defined or declared
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(9): message : see declaration of 'Board::UpdateBoard'
+  Player.cpp
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(35,65): error C2535: 'std::string Board::UpdateBoard(int,int,int,int)': member function already defined or declared
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(9): message : see declaration of 'Board::UpdateBoard'
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(79,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   main.cpp
-  GDW Assignment 1.vcxproj -> F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\x64\Debug\Dirty Derby.exe
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(35,65): error C2535: 'std::string Board::UpdateBoard(int,int,int,int)': member function already defined or declared
+F:\GitHub\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.h(9): message : see declaration of 'Board::UpdateBoard'
+  Generating Code...

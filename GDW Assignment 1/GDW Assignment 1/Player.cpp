@@ -101,7 +101,7 @@ int Player::rollDice()
 
 std::string Player::p_colour(int p_num)
 {
-	f(p_num == 1) return "Red";
+	if(p_num == 1) return "Red";
 	if (p_num == 2) return "Green";
 	if (p_num == 3) return "Blue";
 	if (p_num == 4) return "Yellow";
