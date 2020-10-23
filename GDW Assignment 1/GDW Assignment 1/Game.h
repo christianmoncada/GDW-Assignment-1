@@ -7,5 +7,5 @@ class Game {
 public:
 	static bool isOccupied;
 
-
+	
 };
