@@ -36,14 +36,17 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < std::size(players); i++)
 		{
+			rollDiceTurn = 0;
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
 			//roll dice
-			cout << "To roll the dice type 1";
-			cin >> rollDiceTurn;
-				if (rollDiceTurn == 1)
-				{
-					roll = players[i].rollDice();
-				}
+
+			while (rollDiceTurn != 1)
+			{
+				cout << "To roll the dice type 1 \n";
+				cin >> rollDiceTurn;
+				
+			}
+			roll = players[i].rollDice();
 			std::cout << "Player " << players[i].GetNumber() << " rolled a " << roll << std::endl;
 			//move
 			players[i].MovementUpdate(roll);

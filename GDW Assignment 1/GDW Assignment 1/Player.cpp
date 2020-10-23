@@ -95,7 +95,7 @@ int Player::rollDice()
 		for (int i = 0; i < 2; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
-			cout << dice << endl;
+			//cout << dice << endl;
 			diceroll += dice;
 		}
 	}
@@ -104,7 +104,7 @@ int Player::rollDice()
 		for (int i = 0; i < 1; i++)
 		{
 			int dice = (int)(1 + rand() % 6);
-			cout << dice << endl;
+			//cout << dice << endl;
 			diceroll += dice;
 		}
 	}
