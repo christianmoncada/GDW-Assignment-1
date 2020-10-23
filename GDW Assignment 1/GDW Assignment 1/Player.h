@@ -10,13 +10,14 @@ class Player
 {
 public:
 	Player();
-	Player(int number, int position, Board& board);
+	Player(int number, int position);
 
-	void InitPlayer(int number, int position, Board& board);
+	void InitPlayer(int number, int position);
 
 
 	void ForceMovement(int n);
-	void MovementUpdate(int diceroll);
+	bool isTrapped();
+	void MovementUpdate(int diceroll, Board& bruh);
 	int rollDice();
 	std::string p_colour(int p_num);
 	int GetPosition();

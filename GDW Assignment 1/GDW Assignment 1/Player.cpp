@@ -7,15 +7,14 @@ Player::Player()
 {
 }
 
-Player::Player(int number, int position, Board& board)
+Player::Player(int number, int position)
 {
-	InitPlayer(number, position, board);
+	InitPlayer(number, position);
 }
-void Player::InitPlayer(int number, int position, Board& board)
+void Player::InitPlayer(int number, int position)
 {
 	p_num = number;
 	p_pos = position;
-	theBoard = board;
 	
 }
 int Player::GetPosition()
@@ -36,8 +35,12 @@ void Player::ForceMovement(int n)
 	}
 	p_pos += n;
 }
+bool Player::isTrapped()
+{
+	return onTrap;
+}
 
-void Player::MovementUpdate(int dice)
+void Player::MovementUpdate(int dice, Board& bruh)
 {
 	//stops if on trap
 	if (onTrap)
@@ -46,14 +49,14 @@ void Player::MovementUpdate(int dice)
 		return;
 	}
 
-	int oldPos = p_pos;
+	//int oldPos = p_pos;
 	for (int i = 0; i < dice; i++)
 	{
-		p_pos++;
-		if (theBoard.isOccupied(p_pos, p_num))
+		p_pos+=1;
+		if (bruh.isOccupied(p_pos, p_num))
 		{
 			char ans;
-			cout << "Does player " << p_colour(p_num) << " want to battle player " << theBoard.getPlayer(p_pos, p_num) <<"?" << endl;
+			cout << "Does player " << p_colour(p_num) << " want to battle player " << p_colour(bruh.getPlayer(p_pos, p_num)) <<"?" << endl;
 			cout << "Enter y for yes, anything else for no." << endl;
 			cin >> ans;
 			if (ans == 'Y' || ans == 'y')
@@ -73,18 +76,25 @@ void Player::MovementUpdate(int dice)
 		}
 	}
 	
-	if (theBoard.isTrap(p_pos))//is this position a trap
+	if (bruh.isTrap(p_pos))//is this position a trap
 	{
 		std::cout << "Landed on a trap!" << std::endl;
 		onTrap = true;
 	}
-	if (theBoard.isBoost(p_pos))//is this position a boost
+	if (bruh.isBoost(p_pos))//is this position a boost
 	{
 		std::cout << "Landed on a boost!" << std::endl;
 		onBoost = true;
 	}
+	//doesnt go past 100
+	if (p_pos > 100)
+	{
+		p_pos = 100;
+	}
+
+
 	//might not be needed
-	theBoard.changePos(p_pos, p_num);
+	bruh.changePos(p_pos, p_num);
 	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player
 	//board.position(oldPos).removePlayer(self)//let the board know that the player is moved
 }
@@ -110,7 +120,7 @@ int Player::rollDice()
 			diceroll += dice;
 		}
 	}
-	//is_boost = false;
+	onBoost = false;
 	return diceroll;
 }
 
