@@ -22,9 +22,12 @@ int main()
 	player4.InitPlayer(4, 0, theBoard);
 	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	
+	std::cout << "Player num is: " << player1.GetNumber() << std::endl;
 	std::cout << "Player num is: " << player2.GetNumber() << std::endl;
+	std::cout << "Player num is: " << player3.GetNumber() << std::endl;
+	std::cout << "Player num is: " << player4.GetNumber() << std::endl;
 	
 
 	std::cout << theBoard.UpdateBoard(1, 1, 1, 1);
-
+	
 }
