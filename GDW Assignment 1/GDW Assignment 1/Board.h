@@ -34,6 +34,7 @@ public:
 	}
 
 	bool isOccupied(int pos, int player);
+	int getPlayer(int pos, int player);
 	void changePos(int pos, int player);
 };
 
