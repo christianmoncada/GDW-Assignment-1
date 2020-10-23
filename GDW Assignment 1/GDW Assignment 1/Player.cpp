@@ -5,11 +5,11 @@ Player::Player()
 {
 }
 
-Player::Player(int number, int& position, Board& board)
+Player::Player(int number, int position, Board& board)
 {
 	InitPlayer(number, position, board);
 }
-void Player::InitPlayer(int number, int& position, Board& board)
+void Player::InitPlayer(int number, int position, Board& board)
 {
 	p_num = number;
 	p_pos = position;
