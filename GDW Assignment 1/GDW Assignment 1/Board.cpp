@@ -73,6 +73,74 @@ bool Board::isOccupied(int pos, int player)
 	}
 
 }
+int Board::getPlayer(int pos, int player)
+{
+	switch (player) //only possible to be 1, 2, 3, or 4
+	{
+	case 1:
+		if (pos == pos2)
+		{
+			return 2;
+		}
+		else if (pos == pos3)
+		{
+			return 3;
+		}
+		else if (pos == pos4)
+		{
+			return 4;
+		}
+		break;
+	case 2:
+		if (pos == pos1)
+		{
+			return 1;
+		}
+		else if (pos == pos3)
+		{
+			return 3;
+		}
+		else if (pos == pos4)
+		{
+			return 4;
+		}
+		break;
+	case 3:
+		if (pos == pos1)
+		{
+			return 1;
+		}
+		else if (pos == pos2)
+		{
+			return 2;
+		}
+		else if (pos == pos4)
+		{
+			return 4;
+		}
+		break;
+	case 4:
+		if (pos == pos1)
+		{
+			return 1;
+		}
+		else if (pos == pos2)
+		{
+			return 2;
+		}
+		else if (pos == pos3)
+		{
+			return 3;
+		}
+		break;
+
+	}
+
+
+}
+
+
+//might not be needed
 void Board::changePos(int pos, int player)
 {
 	//update the position of each player
