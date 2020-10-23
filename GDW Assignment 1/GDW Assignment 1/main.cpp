@@ -67,7 +67,6 @@ int main()
 			gamecontinue = false;
 		}
 
-
 	}
 	//create ending screen here
 }
