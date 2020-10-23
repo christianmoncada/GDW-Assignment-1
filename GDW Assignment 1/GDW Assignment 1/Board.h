@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <Windows.h>
+#include "Game.h"
 
 
 class Board {
 public:
 	
-	std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
+	void UpdateBoard(int pos1, int pos2, int pos3, int pos4);
 	/*
 	1 = Red
 	2 = Green
