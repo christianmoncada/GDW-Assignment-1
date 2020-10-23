@@ -108,7 +108,7 @@ int Player::rollDice()
 			diceroll += dice;
 		}
 	}
-	//is_boost = false;
+	onBoost = false;
 	return diceroll;
 }
 
