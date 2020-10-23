@@ -3,14 +3,15 @@
 #include <iostream>
 #include "Player.h"
 #include <vector>
-
+#include "MainMenu.h"
 
 //Board randomName;
 
 int main()
 {
 	//start scene here
-
+	MainMenu startMenu;
+	startMenu.mainMenu();
 	int roll;
 	Board theBoard;
 	Player player2;
@@ -23,7 +24,7 @@ int main()
 	player4.InitPlayer(4, 0);
 	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
-	int rollDiceTurn = 0;
+	int rollDiceTurn = 1;
 	Player winner;
 	Player isSecond;
 	Player isThird;
@@ -44,9 +45,11 @@ int main()
 	//game loop
 	while (gamecontinue)
 	{
+		
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
+			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
@@ -70,7 +73,6 @@ int main()
 			//move
 			players[i].MovementUpdate(roll, theBoard);
 			//update board to draw new position
-			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
