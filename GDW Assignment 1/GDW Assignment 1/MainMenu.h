@@ -6,5 +6,6 @@ class MainMenu
 {
 public:
 
-
+	void mainMenu();
+	int startOrExit;
 };

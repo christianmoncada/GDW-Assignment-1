@@ -1,19 +1,16 @@
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   MainMenu.cpp
   GDW Assignment 1.vcxproj -> F:\GitHub\GDW-Assignment-1\GDW Assignment 1\x64\Debug\Dirty Derby.exe
 =======
-=======
->>>>>>> Stashed changes
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (GDW Assignment 1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Board.cpp
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.h(13,8): error C2061: syntax error: identifier 'Board'
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.h(15,49): error C2061: syntax error: identifier 'Board'
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.h(29,16): error C3646: 'theBoard': unknown override specifier
-F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.h(29,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   Game.cpp
   Player.cpp
 F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Player.cpp(92,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   main.cpp
   Generating Code...
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.cpp(75): warning C4715: 'Board::isOccupied': not all control paths return a value
+F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\GDW Assignment 1\Board.cpp(140): warning C4715: 'Board::getPlayer': not all control paths return a value
+  GDW Assignment 1.vcxproj -> F:\OTU\GDW\GDW-Assignment-1\GDW Assignment 1\x64\Debug\Dirty Derby.exe
+>>>>>>> Stashed changes

@@ -2,14 +2,15 @@
 #include "Board.h"
 #include <iostream>
 #include "Player.h"
-
+#include "MainMenu.h"
 
 //Board randomName;
 
 int main()
 {
 	//start scene here
-
+	MainMenu startMenu;
+	startMenu.mainMenu();
 	int roll;
 	Board theBoard;
 	Player player2;
@@ -22,7 +23,7 @@ int main()
 	player4.InitPlayer(4, 0, theBoard);
 	//theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
-	int rollDiceTurn = 0;
+	int rollDiceTurn = 1;
 	Player winner;
 	bool hasWon = false;
 
@@ -44,7 +45,7 @@ int main()
 
 			while (rollDiceTurn != 1)
 			{
-				cout << "To roll the dice type 1 \n";
+				cout << "To roll the dice, type 1 \n";
 				cin >> rollDiceTurn;
 				
 			}
