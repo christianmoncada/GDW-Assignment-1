@@ -3,7 +3,6 @@
 #include <string>
 
 
-
 class Board {
 public:
 	
@@ -34,6 +33,9 @@ public:
 		else { return false; }
 	}
 	std::string UpdateBoard(int pos1, int pos2, int pos3, int pos4);
+
+	bool isOccupied(int pos, int player);
+	void changePos(int pos, int player);
 };
 
 /*
