@@ -10,7 +10,7 @@ int main()
 {
 	//start scene here
 
-
+	int roll;
 	Board theBoard;
 	Player player2;
 	Player player3;
@@ -22,7 +22,7 @@ int main()
 	player4.InitPlayer(4, 0, theBoard);
 	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
-
+	int rollDiceTurn = 0;
 	Player winner;
 	bool hasWon = false;
 
@@ -38,7 +38,12 @@ int main()
 		{
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
 			//roll dice
-			int roll = players[i].rollDice();
+			cout << "To roll the dice type 1";
+			cin >> rollDiceTurn;
+				if (rollDiceTurn == 1)
+				{
+					roll = players[i].rollDice();
+				}
 			std::cout << "Player " << players[i].GetNumber() << " rolled a " << roll << std::endl;
 			//move
 			players[i].MovementUpdate(roll);
