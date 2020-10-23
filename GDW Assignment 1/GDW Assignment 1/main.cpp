@@ -20,7 +20,7 @@ int main()
 	player2.InitPlayer(2, 0, theBoard);
 	player3.InitPlayer(3, 0, theBoard);
 	player4.InitPlayer(4, 0, theBoard);
-	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
+	//theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
 	int rollDiceTurn = 0;
 	Player winner;
@@ -33,9 +33,11 @@ int main()
 	//game loop
 	while (gamecontinue)
 	{
+		
 		//repeats actions 4 times for each player
 		for (int i = 0; i < std::size(players); i++)
 		{
+			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
 			//roll dice
@@ -51,7 +53,6 @@ int main()
 			//move
 			players[i].MovementUpdate(roll);
 			//update board to draw new position
-			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 
 			//add check if the player's position is greater than or equal to 100, if it is, then remove that player from the array
 			//and if they are the first person to 100, set them as the winner. Ex make winner = the player that one, and set hasWon = true so we know there is already a winner
@@ -66,7 +67,6 @@ int main()
 			std::cout << "Game has ended.\n";
 			gamecontinue = false;
 		}
-
 
 	}
 	//create ending screen here
