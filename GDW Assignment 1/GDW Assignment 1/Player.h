@@ -22,6 +22,8 @@ public:
 	static std::string p_colour(int p_num);
 	int GetPosition();
 	int GetNumber();
+	bool isBoost();
+	void ForceBoost();
 private:
 	int p_num = 0;
 	int p_pos = 0;

@@ -16,8 +16,10 @@ int main()
 	MainMenu startMenu;
 	startMenu.mainMenu();
 
-	int roll;
-	Board theBoard;
+
+	//determine player order here
+	std::vector<Player> players;
+	//Player players[4] = { player1, player2, player3, player4 };
 	Player player2;
 	Player player3;
 	Player player4;
@@ -26,6 +28,16 @@ int main()
 	player2.InitPlayer(2, 0);
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
+	players.push_back(player1);
+	players.push_back(player2);
+	players.push_back(player3);
+	players.push_back(player4);
+
+	int roll;
+	Board theBoard;
+	theBoard.InitBoard(players[0], players[1], players[2], players[3]);
+	
+	
 	bool gamecontinue = true;
 	char rollDiceTurn;
 	Player winner;
@@ -37,13 +49,7 @@ int main()
 	bool third = false;
 
 	
-	//determine player order here
-	std::vector<Player> players;
-	//Player players[4] = { player1, player2, player3, player4 };
-	players.push_back(player1);
-	players.push_back(player2);
-	players.push_back(player3);
-	players.push_back(player4);
+	
 	int counter = 0;
 	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
 	//game loop

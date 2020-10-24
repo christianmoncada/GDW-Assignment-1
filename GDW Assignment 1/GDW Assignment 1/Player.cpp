@@ -1,5 +1,85 @@
 #include "Player.h"
 #include "Board.h"
+#include "Sabotage.h"
+
+void BattleSystem(Player& challenger, Player& defender, Board& board) {
+	//Determines if there is a Battle 
+
+	//If Player Decide to Battle
+
+	if (challenger.isTrapped() || defender.isTrapped())
+	{
+		std::cout << "Can't have a battle now, someone is trapped\n";
+		return;
+	}
+
+
+	//Rolls the Battle Dics
+
+	int Challenger_die, Defender_die;
+
+	do {
+		Challenger_die = challenger.rollDice();
+		Defender_die = defender.rollDice();
+
+		std::cout << " Challenger rolled a " << Challenger_die << std::endl;
+		std::cout << " Defender rolled a " << Defender_die << std::endl;
+
+
+	} while (Challenger_die == Defender_die);
+
+	// Determines the winner and move both players
+//challenger wins
+	if (Challenger_die > Defender_die) {
+		//landed on boost square
+		if (defender.isBoost()) {
+			challenger.MovementUpdate(10, board);
+			defender.ForceBoost();
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+
+		}
+		//normal square
+		else {
+			challenger.MovementUpdate(5, board);
+			defender.ForceMovement(Challenger_die - Defender_die);
+			defender.MovementUpdate(-1, board);
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+	}
+	//defender wins
+	else if (Defender_die > Challenger_die) {
+		//landed on boost
+		if (defender.isBoost()) {
+			defender.MovementUpdate(10, board);
+			challenger.ForceBoost();
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+		//normal square
+		else {
+			defender.MovementUpdate(5, board);
+			challenger.ForceMovement(Defender_die - Challenger_die);
+			challenger.MovementUpdate(-1, board);
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+	}
+
+}
 
 Player::Player()
 {
@@ -23,6 +103,16 @@ int Player::GetNumber()
 {
 	return p_num;
 }
+
+bool Player::isBoost()
+{
+	return onBoost;
+}
+void Player::ForceBoost()
+{
+	onBoost = !onBoost;
+}
+
 void Player::ForceMovement(int n)
 {
 	//makes sure position isnt negative
@@ -68,21 +158,15 @@ void Player::MovementUpdate(int dice, Board& bruh)
 			SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << p_colour(p_num); SetConsoleTextAttribute(Board::hconsole, 11);
 			std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << p_colour(bruh.getPlayer(p_pos, p_num)); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
 			SetConsoleTextAttribute(Board::hconsole, 14);
+			
 			std::cout << "Enter y for yes, anything else for no.                                        \n";
 			std::cin >> ans;
 			SetConsoleTextAttribute(Board::hconsole, 15);
 			if (ans == 'Y' || ans == 'y')
 			{
-				//Sabotage(self, board.position.player);
-				//if (winner == p_num) //player won the duel
-				//{
-				//	ForceMovement(5);
-				//	board.update()
-				//}
-				//else //player did not win
-				//{
-				//	ForceMovement(-())
-				//}
+				Player other_player = bruh.getPlayerobj(bruh.getPlayer(p_pos, p_num));
+				BattleSystem(*this, other_player, bruh);
+				
 				break;
 			}
 		}
@@ -97,13 +181,18 @@ void Player::MovementUpdate(int dice, Board& bruh)
 	if (bruh.isBoost(p_pos))//is this position a boost
 	{
 		SetConsoleTextAttribute(Board::hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
-		onBoost = true;
+		onBoost = !onBoost;
 		SetConsoleTextAttribute(Board::hconsole, 15);
 	}
 	//doesnt go past 100
 	if (p_pos > 100)
 	{
 		p_pos = 100;
+	}
+	//doesnt go behind 0
+	if (p_pos < 0)
+	{
+		p_pos = 0;
 	}
 	
 	//might not be needed

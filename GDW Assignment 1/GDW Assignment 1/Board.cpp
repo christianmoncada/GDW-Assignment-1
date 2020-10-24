@@ -258,3 +258,32 @@ void Board::outYellow(int x, int y)
 	Board::resetCur(x, y); std::cout << "Y ";
 }
 
+void Board::InitBoard(Player& player1, Player& player2, Player& player3, Player& player4)
+{
+	Player1 = player1;
+	Player2 = player2;
+	Player3 = player3;
+	Player4 = player4;
+
+}
+
+Player Board::getPlayerobj(int p_num)
+{
+	if (p_num == 1)
+	{
+		return Player1;
+	}
+	else if (p_num == 2)
+	{
+		return Player2;
+	}
+	else if (p_num == 3)
+	{
+		return Player3;
+	}
+	else if (p_num == 4)
+	{
+		return Player4;
+	}
+}
+
