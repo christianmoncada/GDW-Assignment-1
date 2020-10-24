@@ -52,6 +52,7 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
+			//update board to draw new position
 			Board::resetCur();
 			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
@@ -76,7 +77,7 @@ int main()
 			}
 			//move
 			players[i].MovementUpdate(roll, theBoard);
-			//update board to draw new position
+			
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
@@ -89,32 +90,46 @@ int main()
 					winner = players[i];
 					hasWon = true;
 				}
-				if (hasWon && !second)
+				else if (hasWon && !second)
 				{
 					isSecond = players[i];
 					second = true;
 				}
-				if (hasWon && second && !third)
+				else if (hasWon && second && !third)
 				{
 					isThird = players[i];
 					third = true;
 				}
 				std::cout << "Player " << players[i].GetNumber() << " has finished!" << std::endl;
-				//removes the player from the array and pushes the other members accordingly
-				players.erase(players.begin() + i);
-				//brings the loop back
-				i=-1;
+
 			}
 			//stops early if one person is left
 			if (players.size() <= 1)
 			{
 				break;
 			}
+			
 
 		}
 		//end of one turn
 		counter += 1;
+		
+		for (int i = 0; i < players.size(); i++)
+		{
+			
+			if (players[i].GetPosition() == 100)
+			{
+				players.erase(players.begin() + i);
+				i--;
 
+			}
+			// stops early if one person is left
+			if (players.size() <= 1)
+			{
+				break;
+			}
+		}
+		
 		std::cout << "End of turn " << counter << std::endl;
 		//means there is only one player left
 		if (players.size() <= 1)
