@@ -8,8 +8,12 @@
 class Board {
 public:
 	
-	void UpdateBoard(int pos1, int pos2, int pos3, int pos4);
+	void UpdateBoard(int pos1 = 1, int pos2 = 1, int pos3 = 1, int pos4 = 1);
 	static void resetCur(int y = -5, int x = 0);
+	void outRed(int x, int y);
+	void outGreen(int x, int y);
+	void outBlue(int x, int y);
+	void outYellow(int x, int y);
 	/*
 	1 = Red
 	2 = Green

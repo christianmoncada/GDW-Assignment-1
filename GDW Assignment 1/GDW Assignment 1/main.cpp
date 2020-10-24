@@ -10,6 +10,7 @@
 
 int main()
 {
+	MoveWindow(GetConsoleWindow(), 150, 100, 900, 500, true);
 	//start scene here
 
 	MainMenu startMenu;
