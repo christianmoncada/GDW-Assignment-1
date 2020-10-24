@@ -19,7 +19,7 @@ public:
 	bool isTrapped();
 	void MovementUpdate(int diceroll, Board& bruh);
 	int rollDice();
-	std::string p_colour(int p_num);
+	static std::string p_colour(int p_num);
 	int GetPosition();
 	int GetNumber();
 private:

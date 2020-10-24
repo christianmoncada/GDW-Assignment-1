@@ -1,37 +1,41 @@
 #include "GameOver.h"
 #include <iostream>
-using namespace std;
+#include "Windows.h"
+#include "Board.h"
 
 void GameOver::gameOver()
 {
 	//ASCII art
-	cout << " ________           _________	 ___        ___      __________\n";
-	cout << "|   _____|	   |   ___   |  |   \\      /   |    |   _______|\n";
-	cout << "|  |               |  |   |  |  |    \\    /    |    |  |\n";
-	cout << "|  |		   |  |   |  |  |  |\\ \\  / /|  |    |  |_______ \n";
-	cout << "|  |    ______     |  |___|  |  |  |\\ \\  / /|  |    |   _______| \n";
-	cout << "|  |   |___   |    |   ___   |  |  | \\ \\/ / |  |    |  |	\n";
-	cout << "|  |_____  |  |    |  |   |  |  |  |  \\__/  |  |    |  |_______\n";
-	cout << "|________| |__|    |__|   |__|  |__|        |__|    |__________|\n";
-	cout << " \n";
-	cout << " ___________      ___         ___    __________     _________ \n";
-	cout << "|   _____   |     \\  \\       /  /   |   _______|   |   ___   \\ \n";
-	cout << "|  |     |  |      \\  \\     /  /    |  |_______    |  |   \\   \\ \n";
-	cout << "|  |     |  |       \\  \\   /  /     |   _______|   |  |___/   /\n";
-	cout << "|  |     |  |        \\  \\ /  /      |  |	   |   ___   /\n";
-	cout << "|  |_____|  |         \\  v  /       |  |_______    |  |   \\  \\\n";
-	cout << "|___________|          \\___/        |__________|   |__|    \\__\\\n\n";
-	cout << "By: Christian Moncada, Angelina Ratchkov, Aedyn Timm-Bradley, Dylan Gullins & Arianna Thorson \n\n";
-	cout << "      ___________\n";
-	cout << " ____|           |____\n";
-	cout << "| ___|    /|     |___ |\n";
-	cout << "| |  |   / |     |  | |\n";
-	cout << "\\ \\  \\     |     /  / /\n";
-	cout << " \\ \\__\\  __|__  /__/ /\n";
-	cout << "  \\____\\       /____/\n";
-	cout << "       /       \\\n";
-	cout << "      /_________\\\n";
-	cout << "     |           |\n";
-	cout << "     |___________|\n";
+	SetConsoleTextAttribute(Board::hconsole, 12);
+	std::cout << " ________           _________	 ___        ___      __________\n";
+	std::cout << "|   _____|	   |   ___   |  |   \\      /   |    |   _______|\n";
+	std::cout << "|  |               |  |   |  |  |    \\    /    |    |  |\n";
+	std::cout << "|  |		   |  |   |  |  |  |\\ \\  / /|  |    |  |_______ \n";
+	std::cout << "|  |    ______     |  |___|  |  |  |\\ \\  / /|  |    |   _______| \n";
+	std::cout << "|  |   |___   |    |   ___   |  |  | \\ \\/ / |  |    |  |	\n";
+	std::cout << "|  |_____  |  |    |  |   |  |  |  |  \\__/  |  |    |  |_______\n";
+	std::cout << "|________| |__|    |__|   |__|  |__|        |__|    |__________|\n\n";
+	SetConsoleTextAttribute(Board::hconsole, 7);
+	std::cout << "      ___________      ___         ___    __________     _________ \n";
+	std::cout << "     |   _____   |     \\  \\       /  /   |   _______|   |   ___   \\ \n";
+	std::cout << "     |  |     |  |      \\  \\     /  /    |  |_______    |  |   \\   \\ \n";
+	std::cout << "     |  |     |  |       \\  \\   /  /     |   _______|   |  |___/   /\n";
+	std::cout << "     |  |     |  |        \\  \\ /  /      |  |	   |   ___   /\n";
+	std::cout << "     |  |_____|  |         \\  v  /       |  |_______    |  |   \\  \\\n";
+	std::cout << "     |___________|          \\___/        |__________|   |__|    \\__\\\n\n";
+
+	//std::cout << "By: Christian Moncada, Angelina Ratchkov, Aedyn Timm-Bradley, Dylan Gullins & Arianna Thorson \n\n";
+	SetConsoleTextAttribute(Board::hconsole, 6);
+	std::cout << "      ___________\n";
+	std::cout << " ____|           |____\n";
+	std::cout << "| ___|    /|     |___ |\n";
+	std::cout << "| |  |   / |     |  | |\n";
+	std::cout << "\\ \\  \\     |     /  / /\n";
+	std::cout << " \\ \\__\\  __|__  /__/ /\n";
+	std::cout << "  \\____\\       /____/\n";
+	std::cout << "       /       \\\n";
+	std::cout << "      /_________\\\n";
+	std::cout << "     |           |\n";
+	std::cout << "     |___________|\n";
 	exit(0);
 }

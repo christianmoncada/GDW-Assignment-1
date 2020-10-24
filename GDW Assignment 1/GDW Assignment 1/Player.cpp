@@ -1,8 +1,6 @@
 #include "Player.h"
 #include "Board.h"
 
-
-
 Player::Player()
 {
 }
@@ -61,17 +59,18 @@ void Player::MovementUpdate(int dice, Board& bruh)
 			if (p_colour(p_num) == "Red" ) C1 = 4;
 			if (p_colour(p_num) == "Green" ) C1 = 2;
 			if (p_colour(p_num) == "Blue" ) C1 = 1;
-			if (p_colour(p_num) == "Yellow" ) C1 = 5;
+			if (p_colour(p_num) == "Yellow" ) C1 = 6;
 
 			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Red" ) C2 = 4;
 			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Green" ) C2 = 2;
 			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Blue" ) C2 = 1;
-			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Yellow" ) C2 = 5;
+			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Yellow" ) C2 = 6;
 			SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << p_colour(p_num); SetConsoleTextAttribute(Board::hconsole, 11);
 			std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << p_colour(bruh.getPlayer(p_pos, p_num)); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-			SetConsoleTextAttribute(Board::hconsole, 15);
+			SetConsoleTextAttribute(Board::hconsole, 14);
 			std::cout << "Enter y for yes, anything else for no.                                        \n";
 			std::cin >> ans;
+			SetConsoleTextAttribute(Board::hconsole, 15);
 			if (ans == 'Y' || ans == 'y')
 			{
 				//Sabotage(self, board.position.player);
@@ -106,8 +105,7 @@ void Player::MovementUpdate(int dice, Board& bruh)
 	{
 		p_pos = 100;
 	}
-
-
+	
 	//might not be needed
 	bruh.changePos(p_pos, p_num);
 	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player

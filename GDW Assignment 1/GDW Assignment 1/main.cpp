@@ -4,7 +4,7 @@
 #include "Player.h"
 #include <vector>
 #include "MainMenu.h"
-#include "GameOver.h";
+#include "GameOver.h"
 
 //Board randomName;
 
@@ -62,6 +62,7 @@ int main()
 			roll = 0; //resets roll each turn
 
 			Board::resetCur(0, 38);
+			SetConsoleTextAttribute(Board::hconsole, 15);
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn.\n\n";
 			//roll dice
 			if (players[i].isTrapped())
