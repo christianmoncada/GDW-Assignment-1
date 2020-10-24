@@ -5,8 +5,197 @@
 #include <vector>
 #include "MainMenu.h"
 #include "GameOver.h"
+#include <algorithm>
 
-//Board randomName;
+void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& board);
+
+
+void BattleSystem(std::vector<Player> players, Player& challenger, Player& defender, int ci, int di, Board& board) {
+	//Determines if there is a Battle 
+
+	//If Player Decide to Battle
+
+	if (challenger.isTrapped() || defender.isTrapped())
+	{
+		std::cout << "Can't have a battle now, someone is trapped\n";
+		return;
+	}
+
+
+	//Rolls the Battle Dics
+
+	int Challenger_die, Defender_die;
+	char rollDiceTurn = 0;
+
+	do {
+		while (rollDiceTurn != '1')
+		{
+			cout << "Challenger, To roll the dice type 1 \n\n";
+			cin >> rollDiceTurn;
+
+		}
+		Challenger_die = challenger.rollDice();
+		rollDiceTurn = 0;
+		while (rollDiceTurn != '1')
+		{
+			cout << " Defender, To roll the dice type 1 \n\n";
+			cin >> rollDiceTurn;
+
+		}
+		Defender_die = defender.rollDice();
+		rollDiceTurn = 0;
+
+		std::cout << " Challenger rolled a " << Challenger_die << std::endl;
+		std::cout << " Defender rolled a " << Defender_die << std::endl;
+
+
+	} while (Challenger_die == Defender_die);
+
+	// Determines the winner and move both players
+//challenger wins
+	if (Challenger_die > Defender_die) {
+		//landed on boost square
+		if (defender.isBoost()) {
+			
+			//MovementUpdate(players, ci, 10, board);
+			challenger.ForceMovement(10);
+			MovementUpdate(players, ci, 0, board);
+			defender.ForceBoost(false);
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+
+		}
+		//normal square
+		else {
+			
+			//MovementUpdate(players, ci, 5, board);
+			challenger.ForceMovement(5);
+			MovementUpdate(players, ci, 0, board);
+			defender.ForceMovement(-(Challenger_die - Defender_die));
+			MovementUpdate(players, di, 0, board);
+			
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+	}
+	//defender wins
+	else if (Defender_die > Challenger_die) {
+		//landed on boost
+		if (defender.isBoost()) {
+			//MovementUpdate(players, di, 10, board);
+			defender.ForceMovement(10);
+			MovementUpdate(players, di, 0, board);
+			challenger.ForceBoost(false);
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+		//normal square
+		else {
+			std::cout << di << std::endl;
+			//MovementUpdate(players, di, 5, board);
+			defender.ForceMovement(5);
+			MovementUpdate(players, di, 0, board);
+			challenger.ForceMovement(-(Defender_die - Challenger_die));
+			MovementUpdate(players, ci, 0, board);
+			
+
+			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
+			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
+			return;
+		}
+	}
+
+}
+
+void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& board)
+{
+	//std::cout << "Is this being called?\n";
+	int player_num = players[pnum].GetNumber();
+	//stops on trap
+	if (players[pnum].isTrapped())
+	{
+		players[pnum].SetTrapped(false);
+		return;
+	}
+
+	for (int i = 0; i < roll; i++)
+	{
+		players[pnum].ForceMovement(1);
+		if (board.isOccupied(players[pnum].GetPosition(), player_num) && !(board.isTrap(players[pnum].GetPosition())))
+		{
+			int C1 = 13; //colour1
+			int C2 = 16; //colour2
+			char ans;
+			if (players[pnum].p_colour(player_num) == "Red") C1 = 4;
+			if (players[pnum].p_colour(player_num) == "Green") C1 = 2;
+			if (players[pnum].p_colour(player_num) == "Blue") C1 = 1;
+			if (players[pnum].p_colour(player_num) == "Yellow") C1 = 6;
+
+			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Red") C2 = 4;
+			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Green") C2 = 2;
+			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Blue") C2 = 1;
+			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Yellow") C2 = 6;
+			SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << players[pnum].p_colour(player_num); SetConsoleTextAttribute(Board::hconsole, 11);
+			std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+			SetConsoleTextAttribute(Board::hconsole, 14);
+
+			std::cout << "Enter y for yes, anything else for no.                                        \n";
+			std::cin >> ans;
+			SetConsoleTextAttribute(Board::hconsole, 15);
+			if (ans == 'Y' || ans == 'y')
+			{
+				int other_element;
+				for (int i = 0; i < players.size(); i++)
+				{
+					if (players[i].GetNumber() == board.getPlayer(players[pnum].GetPosition(), player_num))
+					{
+						other_element = i;
+						break;
+					}
+				}
+				BattleSystem(players, players[pnum], players[other_element],pnum, other_element, board);
+				break;
+			}
+
+		}
+	}
+	if (board.isTrap(players[pnum].GetPosition()))//is this position a trap
+	{
+		SetConsoleTextAttribute(Board::hconsole, 12);	std::cout << "Landed on a trap!                                        \n                                                                                \n                                                                                \n";
+		players[pnum].SetTrapped(true);
+		SetConsoleTextAttribute(Board::hconsole, 15);
+	}
+	if (board.isBoost(players[pnum].GetPosition()))//is this position a boost
+	{
+		SetConsoleTextAttribute(Board::hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
+		players[pnum].ForceBoost(true);
+		SetConsoleTextAttribute(Board::hconsole, 15);
+	}
+	//doesnt go past 100
+	if (players[pnum].GetPosition() > 100)
+	{
+		players[pnum].SetPos(100);
+	}
+	//doesnt go behind 0
+	if (players[pnum].GetPosition() < 0)
+	{
+		players[pnum].SetPos(0);
+	}
+
+	//might not be needed
+	board.changePos(players[pnum].GetPosition(), player_num);
+
+}
 
 int main()
 {
@@ -16,7 +205,18 @@ int main()
 	MainMenu startMenu;
 	startMenu.mainMenu();
 
-
+	int roll;
+	Board theBoard;
+	
+	bool gamecontinue = true;
+	char rollDiceTurn;
+	Player winner;
+	Player isSecond;
+	Player isThird;
+	Player DNF;
+	bool hasWon = false;
+	bool second = false;
+	bool third = false;
 	//determine player order here
 	std::vector<Player> players;
 	//Player players[4] = { player1, player2, player3, player4 };
@@ -32,22 +232,6 @@ int main()
 	players.push_back(player2);
 	players.push_back(player3);
 	players.push_back(player4);
-
-	int roll;
-	Board theBoard;
-	theBoard.InitBoard(players[0], players[1], players[2], players[3]);
-	
-	
-	bool gamecontinue = true;
-	char rollDiceTurn;
-	Player winner;
-	Player isSecond;
-	Player isThird;
-	Player DNF;
-	bool hasWon = false;
-	bool second = false;
-	bool third = false;
-
 	
 	
 	int counter = 0;
@@ -89,7 +273,8 @@ int main()
 
 			}
 			//move
-			players[i].MovementUpdate(roll, theBoard);
+			MovementUpdate(players, i,roll, theBoard);
+			//players[i].MovementUpdate(roll, theBoard);
 			
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
