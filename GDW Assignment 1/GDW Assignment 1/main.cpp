@@ -4,7 +4,7 @@
 #include "Player.h"
 #include <vector>
 #include "MainMenu.h"
-#include "GameOver.h";
+//#include "GameOver.h"
 
 //Board randomName;
 
@@ -27,7 +27,7 @@ int main()
 	player4.InitPlayer(4, 0);
 	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
-	int rollDiceTurn = 1;
+	char rollDiceTurn = 1;
 	Player winner;
 	Player isSecond;
 	Player isThird;
@@ -65,10 +65,10 @@ int main()
 			}
 			else
 			{
-				while (rollDiceTurn != 1)
+				while (rollDiceTurn != '1')
 				{
 					cout << "To roll the dice type 1 \n";
-					cin >> rollDiceTurn;
+					cin >>rollDiceTurn;
 
 				}
 				roll = players[i].rollDice();
@@ -144,6 +144,6 @@ int main()
 
 	}
 	//create ending screen here
-	GameOver endScreen;
-	endScreen.gameOver();
+	//GameOver endScreen;
+	//endScreen.gameOver();
 }
