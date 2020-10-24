@@ -1,44 +1,80 @@
 #include "Board.h"
 #include "Game.h"
-HANDLE hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE Board::hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
 void Board::UpdateBoard(int pos1, int pos2, int pos3, int pos4) {
-	int y = -5, x = 0; 
-	//std::cout << std::string(100, ' ') << "\r" << "testing testing\n\n\nFUCK\n\n";
-	Board::resetCur(y - 0, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 2); std::cout << "########################################################################"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 1, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||=====||=====||=====||=====||=====||=====||=====||=====||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 2, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 3, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 4, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||1====||=====||=====||=====||5=!==||==>==||=====||=====||=====||10===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 5, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 6, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 7, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||==!==||=====||15===||=====||=====||==>==||=====||20===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 8, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 9, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 10, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||=====||=====||25===||=====||==!==||=====||=====||30>==||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 12, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 13, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 14, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||=====||=====||35!==||==>==||=====||=====||=====||40===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 15, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 16, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 17, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||==>==||=====||45===||=====||=====||=====||=====||50!==||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 18, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 19, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 20, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||==>==||=====||=====||=====||55===||=====||=====||=====||=====||60>==||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 21, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 22, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 23, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||==!==||=====||=====||65===||=====||=====||=====||==>==||70===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 24, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 25, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 26, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||=====||=====||75===||==!==||=====||==>==||=====||80===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 27, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 28, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 29, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||=====||=====||=====||85!==||=====||=====||=====||=====||90===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 30, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 31, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||     ||     ||     ||     ||     ||     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 32, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 8); std::cout << "||=====||==!==||=====||=====||95===||=====||=====||=====||==!==||100==||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
-	Board::resetCur(y - 33, x);	SetConsoleTextAttribute(hconsole, 2); std::cout << "#"; SetConsoleTextAttribute(hconsole, 2); std::cout << "########################################################################"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#\n";
+	int y = -5, x = 0;
+	int y1, y2 = 0, y3 = 0, y4 = 0;
+	int x1, x2 = 0, x3 = 0, x4 = 0;
+	Board::resetCur(x, y - 0);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 2); std::cout << "########################################################################"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 1);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====||=====||=====||=====||=====||=====||=====||=====||=====||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 2);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 3);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 4);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||1====||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|5=!==|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||=====||10===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 5);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 6);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 7);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||15===||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||20===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 8);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 9);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 10);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====||=====||=====||25===||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|30>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 11);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 12);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 13);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|35!==|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||=====||40===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 14);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 15);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 16);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||45===||=====||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|50!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 17);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 18);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 19);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||=====||55===||=====||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|60>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 10);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 21);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 22);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||65===||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|70===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 23);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 24);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 25);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====||=====||=====||75===|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====|"; SetConsoleTextAttribute(Board::hconsole, 10); std::cout << "|==>==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||80===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 26);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 27);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 28);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|85!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||=====||=====||90===||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 29);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 30);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||     ||     ||     ||     ||     |"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|     |"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|     ||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 31);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 7); std::cout << "||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|=====||=====||95===||=====||=====||=====|"; SetConsoleTextAttribute(Board::hconsole, 12); std::cout << "|==!==|"; SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "|100==||"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	Board::resetCur(x, y - 32);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 2); std::cout << "########################################################################"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           ";
+	SetConsoleTextAttribute(hconsole, 15);
+
+
+	//convert pos1 into an x and y coord
+	if (pos1 <= 10) { x1 = pos1; y1 = -5; }
+	else if (11 <= pos1 <= 20){ y1 = -7; x1 = pos1 - 10 + 7; }
+	else if (21 <= pos1 <= 30){ y1 = -10; x1 = pos1 - 20 + 14; }
+	else if (31 <= pos1 <= 40){ y1 = -13; x1 = pos1 - 30 + 21; }
+	else if (41 <= pos1 <= 50){ y1 = -16; x1 = pos1 - 40 + 28; }
+	else if (51 <= pos1 <= 60){ y1 = -19; x1 = pos1 - 50 + 35; }
+	else if (61 <= pos1 <= 70){ y1 = -22; x1 = pos1 - 60 + 42; }
+	else if (71 <= pos1 <= 80){ y1 = -25; x1 = pos1 - 70 + 49; }
+	else if (81 <= pos1 <= 90){ y1 = -28; x1 = pos1 - 80 + 56; }
+	else if (91 <= pos1 <= 100){ y1 = -31; x1 = pos1 - 90 + 63; }
+	else { x1 = 0; y1 = 0; }
+
+
 
 	SetConsoleTextAttribute(hconsole, 15);
+	Board::resetCur(x, y - 33); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 34); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 35); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 36); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 37); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 38); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 39); std::cout << std::string(80, ' ') << "\r\n";
+	//Board::resetCur(x, y - 40); std::cout << std::string(80, ' ') << "\r\n";
+	//Board::resetCur(x, y - 41); std::cout << std::string(80, ' ') << "\r\n";
+	//Board::resetCur(x, y - 42); std::cout << std::string(80, ' ') << "\r\n";
+
+	//Board::resetCur(0, 0);
+	//Board::resetCur(8, -8);
+	Board::outRed(x1, y1);
+	//Board::outGreen(x2, y2);
+	//Board::outBlue(x3, y3);
+	//Board::outYellow(x4, y4);
+
 }
 
 bool Board::isOccupied(int pos, int player)
@@ -172,7 +208,6 @@ int Board::getPlayer(int pos, int player)
 	}
 
 }
-
 //might not be needed
 void Board::changePos(int pos, int player)
 {
@@ -191,11 +226,35 @@ void Board::changePos(int pos, int player)
 	}
 
 }
-
 void Board::resetCur(int x, int y)
 {
 	std::cout.flush();
 	COORD coord = { (SHORT)x, (SHORT)y };
 	SetConsoleCursorPosition(hconsole, coord);
+}
+
+void Board::outRed(int x, int y)
+{
+	SetConsoleTextAttribute(hconsole, 79);
+	Board::resetCur(x, y); 
+	std::cout << " R";
+	std::cout << "x1= " << x << " ";
+	std::cout << "y1= " << y << "\n";
+}
+void Board::outGreen(int x, int y)
+{
+	SetConsoleTextAttribute(hconsole, 47);
+	Board::resetCur(x, y); 
+	std::cout << "G ";
+}
+void Board::outBlue(int x, int y)
+{
+	SetConsoleTextAttribute(hconsole, 31);
+	Board::resetCur(x, y); std::cout << " B";
+}
+void Board::outYellow(int x, int y)
+{
+	SetConsoleTextAttribute(hconsole, 224);
+	Board::resetCur(x, y); std::cout << "Y ";
 }
 
