@@ -27,7 +27,7 @@ int main()
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
 	bool gamecontinue = true;
-	int rollDiceTurn = 1;
+	char rollDiceTurn;
 	Player winner;
 	Player isSecond;
 	Player isThird;
@@ -72,7 +72,7 @@ int main()
 			}
 			else
 			{
-				while (rollDiceTurn != 1)
+				while (rollDiceTurn != '1')
 				{
 					cout << "To roll the dice type 1 \n\n";
 					cin >> rollDiceTurn;
