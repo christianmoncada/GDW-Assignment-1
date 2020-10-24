@@ -20,6 +20,7 @@ public:
 	int pos2 = 0;
 	int pos3 = 0;
 	int pos4 = 0;
+	static HANDLE hconsole;
 
 	static bool isTrap(int position) {
 		if (position == 5 || position == 13 || position == 27 || position == 35 || position == 50 ||

@@ -22,12 +22,12 @@ int main()
 	player2.InitPlayer(2, 0);
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
-	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
 	int rollDiceTurn = 1;
 	Player winner;
 	Player isSecond;
 	Player isThird;
+	Player DNF;
 	bool hasWon = false;
 	bool second = false;
 	bool third = false;
@@ -41,7 +41,7 @@ int main()
 	players.push_back(player3);
 	players.push_back(player4);
 	int counter = 0;
-
+	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
 	//game loop
 	while (gamecontinue)
 	{
@@ -49,21 +49,27 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
-			Board::resetCur();
+			Board::resetCur(0, 0);
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
 			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
-			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
+
+			Board::resetCur(0, 38);
+			std::cout << "Starting player " << players[i].GetNumber() << "'s turn.\n\n";
 			//roll dice
 			if (players[i].isTrapped())
 			{
-				std::cout << "Sorry, you're on a trap!\n";
+				SetConsoleTextAttribute(Board::hconsole, 4);	std::cout << "\tSorry, you're on a trap!\n";
 			}
 			else
 			{
 				while (rollDiceTurn != 1)
 				{
-					cout << "To roll the dice type 1 \n";
+					cout << "To roll the dice type 1 \n\n";
 					cin >> rollDiceTurn;
 
 				}
@@ -107,7 +113,7 @@ int main()
 			{
 				break;
 			}
-
+			
 		}
 		//end of one turn
 		counter += 1;
@@ -119,9 +125,9 @@ int main()
 			std::cout << "Game has ended.\n";
 			gamecontinue = false;
 			std::cout << "The winner is player " << winner.GetNumber() << std::endl;
-			std::cout << "Second place: " << isSecond.GetNumber() << std::endl;
-			std::cout << "Third place: " << isThird.GetNumber() << std::endl;
-			std::cout << "Last place: " << players[0].GetNumber() << std::endl;
+			std::cout << "Second place: player" << isSecond.GetNumber() << std::endl;
+			std::cout << "Third place: player" << isThird.GetNumber() << std::endl;
+			std::cout << "DNF: player" << players[0].GetNumber() << std::endl;
 		}
 
 	}

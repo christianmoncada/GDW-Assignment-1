@@ -1,5 +1,5 @@
 #pragma once
-using namespace std;
+//using namespace std;
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
