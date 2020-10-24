@@ -4,14 +4,17 @@
 #include "Player.h"
 #include <vector>
 #include "MainMenu.h"
+#include "GameOver.h";
 
 //Board randomName;
 
 int main()
 {
 	//start scene here
+
 	MainMenu startMenu;
 	startMenu.mainMenu();
+
 	int roll;
 	Board theBoard;
 	Player player2;
@@ -126,4 +129,6 @@ int main()
 
 	}
 	//create ending screen here
+	GameOver endScreen;
+	endScreen.gameOver();
 }
