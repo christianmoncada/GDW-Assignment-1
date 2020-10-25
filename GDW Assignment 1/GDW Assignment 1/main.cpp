@@ -434,16 +434,16 @@ int main()
 		//means there is only one player left
 		if (players.size() <= 1)
 		{
-			std::cout << "Game has ended.\n";
-			gamecontinue = false;
-			std::cout << "The winner is player " << winner.GetNumber() << std::endl;
-			std::cout << "Second place: player" << isSecond.GetNumber() << std::endl;
-			std::cout << "Third place: player" << isThird.GetNumber() << std::endl;
-			std::cout << "DNF: player" << players[0].GetNumber() << std::endl;
+			// std::cout << "Game has ended.\n";
+			  gamecontinue = false;
+			// std::cout << "The winner is Player " << winner.GetNumber() << std::endl;
+			// std::cout << "Second place: Player" << isSecond.GetNumber() << std::endl;
+			// std::cout << "Third place: Player" << isThird.GetNumber() << std::endl;
+			// std::cout << "DNF: Player" << players[0].GetNumber() << std::endl;
 		}
 
 	}
 	//create ending screen here
 	GameOver endScreen;
-	endScreen.gameOver();
+	endScreen.gameOver(winner.GetNumber(), isSecond.GetNumber(), isThird.GetNumber(), players[0].GetNumber());
 }
