@@ -4,8 +4,11 @@
 #include "Player.h"
 #include <vector>
 #include "MainMenu.h"
+<<<<<<< HEAD
 #include "GameOver.h"
 #include <algorithm>
+=======
+>>>>>>> parent of ddef407... Summary
 
 void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& board);
 
@@ -216,22 +219,30 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 
 int main()
 {
-	MoveWindow(GetConsoleWindow(), 150, 100, 900, 500, true);
 	//start scene here
-
 	MainMenu startMenu;
 	startMenu.mainMenu();
-
 	int roll;
 	Board theBoard;
+<<<<<<< HEAD
 	char rollDiceTurnStart = '0';
 	bool startLoop = true;
+=======
+	Player player2;
+	Player player3;
+	Player player4;
+	Player player1;
+	player1.InitPlayer(1, 0);
+	player2.InitPlayer(2, 0);
+	player3.InitPlayer(3, 0);
+	player4.InitPlayer(4, 0);
+	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
+>>>>>>> parent of ddef407... Summary
 	bool gamecontinue = true;
-	char rollDiceTurn;
+	int rollDiceTurn = 1;
 	Player winner;
 	Player isSecond;
 	Player isThird;
-	Player DNF;
 	bool hasWon = false;
 	bool second = false;
 	bool third = false;
@@ -338,7 +349,7 @@ int main()
 	}
 
 	int counter = 0;
-	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
+
 	//game loop
 	while (gamecontinue)
 	{
@@ -346,6 +357,7 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
+<<<<<<< HEAD
 			//theBoard.resetCur(0, 0);
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
@@ -362,12 +374,23 @@ int main()
 			if (players[i].isTrapped())
 			{
 				SetConsoleTextAttribute(theBoard.hconsole, 4);	std::cout << "\tSorry, you're on a trap!\n";
+=======
+			Board::resetCur();
+			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
+			rollDiceTurn = 0;
+			roll = 0; //resets roll each turn
+			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
+			//roll dice
+			if (players[i].isTrapped())
+			{
+				std::cout << "Sorry, you're on a trap!\n";
+>>>>>>> parent of ddef407... Summary
 			}
 			else
 			{
-				while (rollDiceTurn != '1')
+				while (rollDiceTurn != 1)
 				{
-					cout << "To roll the dice type 1 \n\n";
+					cout << "To roll the dice type 1 \n";
 					cin >> rollDiceTurn;
 
 				}
@@ -376,9 +399,14 @@ int main()
 
 			}
 			//move
+<<<<<<< HEAD
 			MovementUpdate(players, i,roll, theBoard);
 			//players[i].MovementUpdate(roll, theBoard);
 			
+=======
+			players[i].MovementUpdate(roll, theBoard);
+			//update board to draw new position
+>>>>>>> parent of ddef407... Summary
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
@@ -391,59 +419,58 @@ int main()
 					winner = players[i];
 					hasWon = true;
 				}
-				else if (hasWon && !second)
+				if (hasWon && !second)
 				{
 					isSecond = players[i];
 					second = true;
 				}
-				else if (hasWon && second && !third)
+				if (hasWon && second && !third)
 				{
 					isThird = players[i];
 					third = true;
 				}
 				std::cout << "Player " << players[i].GetNumber() << " has finished!" << std::endl;
-
+				//removes the player from the array and pushes the other members accordingly
+				players.erase(players.begin() + i);
+				//brings the loop back
+				i=-1;
 			}
 			//stops early if one person is left
 			if (players.size() <= 1)
 			{
 				break;
 			}
-			
+
 		}
 		//end of one turn
 		counter += 1;
-		
-		for (int i = 0; i < players.size(); i++)
-		{
-			
-			if (players[i].GetPosition() == 100)
-			{
-				players.erase(players.begin() + i);
-				i--;
 
-			}
-			// stops early if one person is left
-			if (players.size() <= 1)
-			{
-				break;
-			}
-		}
-		
 		std::cout << "End of turn " << counter << std::endl;
 		//means there is only one player left
 		if (players.size() <= 1)
 		{
+<<<<<<< HEAD
 			// std::cout << "Game has ended.\n";
 			  gamecontinue = false;
 			// std::cout << "The winner is Player " << winner.GetNumber() << std::endl;
 			// std::cout << "Second place: Player" << isSecond.GetNumber() << std::endl;
 			// std::cout << "Third place: Player" << isThird.GetNumber() << std::endl;
 			// std::cout << "DNF: Player" << players[0].GetNumber() << std::endl;
+=======
+			std::cout << "Game has ended.\n";
+			gamecontinue = false;
+			std::cout << "The winner is player " << winner.GetNumber() << std::endl;
+			std::cout << "Second place: " << isSecond.GetNumber() << std::endl;
+			std::cout << "Third place: " << isThird.GetNumber() << std::endl;
+			std::cout << "Last place: " << players[0].GetNumber() << std::endl;
+>>>>>>> parent of ddef407... Summary
 		}
 
 	}
 	//create ending screen here
+<<<<<<< HEAD
 	GameOver endScreen;
 	endScreen.gameOver(winner.GetNumber(), isSecond.GetNumber(), isThird.GetNumber(), players[0].GetNumber());
+=======
+>>>>>>> parent of ddef407... Summary
 }

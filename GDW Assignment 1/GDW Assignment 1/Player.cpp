@@ -81,6 +81,8 @@
 //
 //}
 
+
+
 Player::Player()
 {
 }
@@ -133,7 +135,65 @@ void Player::SetPos(int n)
 }
 bool Player::isTrapped()
 {
+<<<<<<< HEAD
 	return onTrap;
+=======
+	//stops if on trap
+	if (onTrap)
+	{
+		onTrap = false;
+		return;
+	}
+
+	//int oldPos = p_pos;
+	for (int i = 0; i < dice; i++)
+	{
+		p_pos+=1;
+		if (bruh.isOccupied(p_pos, p_num))
+		{
+			char ans;
+			cout << "Does player " << p_colour(p_num) << " want to battle player " << p_colour(bruh.getPlayer(p_pos, p_num)) <<"?" << endl;
+			cout << "Enter y for yes, anything else for no." << endl;
+			cin >> ans;
+			if (ans == 'Y' || ans == 'y')
+			{
+				//Sabotage(self, board.position.player);
+				//if (winner == p_num) //player won the duel
+				//{
+				//	ForceMovement(5);
+				//	board.update()
+				//}
+				//else //player did not win
+				//{
+				//	ForceMovement(-())
+				//}
+				break;
+			}
+		}
+	}
+	
+	if (bruh.isTrap(p_pos))//is this position a trap
+	{
+		std::cout << "Landed on a trap!" << std::endl;
+		onTrap = true;
+	}
+	if (bruh.isBoost(p_pos))//is this position a boost
+	{
+		std::cout << "Landed on a boost!" << std::endl;
+		onBoost = true;
+	}
+	//doesnt go past 100
+	if (p_pos > 100)
+	{
+		p_pos = 100;
+	}
+
+
+	//might not be needed
+	bruh.changePos(p_pos, p_num);
+	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player
+	//board.position(oldPos).removePlayer(self)//let the board know that the player is moved
+>>>>>>> parent of ddef407... Summary
 }
 //
 //void Player::MovementUpdate(int dice, Board& bruh)
@@ -236,9 +296,9 @@ int Player::rollDice()
 
 std::string Player::p_colour(int p_num)
 {
-	if(p_num == 1) return "Red";		//SetConsoleTextAttribute(Board::hconsole, 4);
-	if (p_num == 2) return "Green";		//SetConsoleTextAttribute(Board::hconsole, 2); 
-	if (p_num == 3) return "Blue";		//SetConsoleTextAttribute(Board::hconsole, 1);
-	if (p_num == 4) return "Yellow";	//SetConsoleTextAttribute(Board::hconsole, 5); 
+	if(p_num == 1) return "Red";
+	if (p_num == 2) return "Green";
+	if (p_num == 3) return "Blue";
+	if (p_num == 4) return "Yellow";
 	return "ERROR";
 }

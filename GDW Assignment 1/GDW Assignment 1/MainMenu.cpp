@@ -1,33 +1,28 @@
 #include "MainMenu.h"
-#include "Board.h"
 #include <iostream>
+using namespace std;
 
 void MainMenu::mainMenu()
 {
 	//ASCII art
-	SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t ______	     __________	      _________	     __________	    ___   ___ ";				SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t|  __  \\    |___    ___|     |   ___   \\    |___    ___|    \\  \\ /  / ";			SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t| |  \\  \\	|  |	     |  |   \\   \\	|  |	     \\  v  / ";						SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t| |   \\  \\	|  |	     |  |___/   /	|  |	      \\   / ";						SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t| |   /  /	|  |	     |   ___   /        |  |	       | | ";						SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t| |__/  /    ___|  |___	     |  |   \\  \\        |  |           | | ";					SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n"; SetConsoleTextAttribute(Board::hconsole, 14);
-	std::cout << "\t|______/    |__________|     |__|    \\__\\	|__|           |_| ";						SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t||\n";
-	SetConsoleTextAttribute(Board::hconsole, 11);										SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t\t\t\t\t\t\t\t\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t ______	     __________       _________         _________     ___   ___ ";			SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t||\n";		SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t|  __  \\    |   _______|     |   ___   \\       |  _____  \\    \\  \\ /  / ";		SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t||\n";		SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t| |  \\  \\   |  |_______      |  |   \\   \\      | |     \\  \\    \\  v  / ";		SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t| |   \\  \\  |   _______|     |  |___/   /      | |_____/  /     \\   / ";			SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t| |   /  /  |  |	     |   ___   /       |  _____  /       | | ";						SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t| |__/  /   |  |_______	     |  |   \\  \\       | |_____) \\       | |";			SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t|______/    |__________|     |__|    \\  \\      |_________/       |_| ";				SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t||\n";	SetConsoleTextAttribute(Board::hconsole, 11);
-	std::cout << "\t\t                                      \\__\\";										SetConsoleTextAttribute(Board::hconsole, 7); std::cout << "\t\t\t\t\t||\n";
-	SetConsoleTextAttribute(Board::hconsole, 7);
-	std::cout << "================================================================================================++\n\n";
-	SetConsoleTextAttribute(Board::hconsole, 8);
-	std::cout << "By: Christian Moncada, Angelina Ratchkov, Aedyn Timm-Bradley, Dylan Gullins & Arianna Thorson \n\n";
-	std::cout << "Type 1 to start the game | Type 2 to exit the game \n";
-	std::cin >> startOrExit;
+	cout << " ______	     __________	      _________	     __________	    ___   ___ \n";
+	cout << "|  __  \\    |___    ___|     |   ___   \\    |___    ___|    \\  \\ /  / \n";
+	cout << "| |  \\  \\	|  |	     |  |   \\   \\	|  |	     \\  v  / \n";
+	cout << "| |   \\  \\	|  |	     |  |___/   /	|  |	      \\   / \n";
+	cout << "| |   /  /	|  |	     |   ___   /        |  |	       | | \n";
+	cout << "| |__/  /    ___|  |___	     |  |   \\  \\        |  |           | | \n";
+	cout << "|______/    |__________|     |__|    \\__\\	|__|           |_| \n";
+	cout << "\n";
+	cout << " ______	     __________       _________         _________     ___   ___ \n";
+	cout << "|  __  \\    |   _______|     |   ___   \\       |  _____  \\    \\  \\ /  / \n";
+	cout << "| |  \\  \\   |  |_______      |  |   \\   \\      | |     \\  \\    \\  v  / \n";
+	cout << "| |   \\  \\  |   _______|     |  |___/   /      | |_____/  /     \\   / \n";
+	cout << "| |   /  /  |  |	     |   ___   /       |  _____  /       | | \n";
+	cout << "| |__/  /   |  |_______	     |  |   \\  \\       | |_____) \\       | |\n";
+	cout << "|______/    |__________|     |__|    \\__\\      |_________/       |_| \n\n";
+	cout << "By: Christian Moncada, Angelina Ratchkov, Aedyn Timm-Bradley, Dylan Gullins & Arianna Thorson \n\n";
+	cout << "Type 1 to start the game | Type 2 to exit the game \n";
+	cin >> startOrExit;
 
 	if (startOrExit == 1)
 	{
@@ -39,8 +34,7 @@ void MainMenu::mainMenu()
 	}
 	else
 	{
-		SetConsoleTextAttribute(Board::hconsole, 4);
-		std::cout << "Invalid character, starting game anyway you big dummy\n";
+		cout << "Invalid character, starting game anyway you big dummy\n";
 	}
 }
 

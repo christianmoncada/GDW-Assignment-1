@@ -1,5 +1,5 @@
 #pragma once
-//using namespace std;
+using namespace std;
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -19,7 +19,7 @@ public:
 	bool isTrapped();
 	//void MovementUpdate(int diceroll, Board& bruh);
 	int rollDice();
-	static std::string p_colour(int p_num);
+	std::string p_colour(int p_num);
 	int GetPosition();
 	int GetNumber();
 	bool isBoost();
