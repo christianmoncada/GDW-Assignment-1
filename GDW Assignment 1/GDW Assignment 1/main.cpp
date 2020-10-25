@@ -153,8 +153,8 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Green") C2 = 2;
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Blue") C2 = 1;
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Yellow") C2 = 6;
-			SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << players[pnum].p_colour(player_num); SetConsoleTextAttribute(board.hconsole, 11);
-			std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+			SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << players[pnum].GetNumber(); SetConsoleTextAttribute(board.hconsole, 11);
+			std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << board.getPlayer(players[pnum].GetPosition(), player_num); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
 			SetConsoleTextAttribute(board.hconsole, 14);
 
 			std::cout << "Enter y for yes, anything else for no.                                        \n";
@@ -199,9 +199,9 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 		players[pnum].SetPos(100);
 	}
 	//doesnt go behind 0
-	if (players[pnum].GetPosition() < 0)
+	if (players[pnum].GetPosition() < 1)
 	{
-		players[pnum].SetPos(0);
+		players[pnum].SetPos(1);
 	}
 
 	//might not be needed
@@ -237,10 +237,10 @@ int main()
 	Player player3;
 	Player player4;
 	Player player1;
-	player1.InitPlayer(1, 0);
-	player2.InitPlayer(2, 0);
-	player3.InitPlayer(3, 0);
-	player4.InitPlayer(4, 0);
+	player1.InitPlayer(1, 1);
+	player2.InitPlayer(2, 1);
+	player3.InitPlayer(3, 1);
+	player4.InitPlayer(4, 1);
 
 	int startRoll1;
 	int startRoll2;
