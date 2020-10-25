@@ -6,6 +6,6 @@ class GameOver
 {
 public:
 
-	void gameOver();
+	void gameOver(int firstPlace, int secondPlace, int thirdPlace, int fourthPlace);
 	//int startOrExit;
 };

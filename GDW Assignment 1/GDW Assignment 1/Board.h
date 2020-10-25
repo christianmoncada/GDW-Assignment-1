@@ -4,7 +4,6 @@
 #include <Windows.h>
 
 
-
 class Board {
 public:
 	
@@ -14,16 +13,18 @@ public:
 	void outGreen(int x, int y);
 	void outBlue(int x, int y);
 	void outYellow(int x, int y);
+	
 	/*
 	1 = Red
 	2 = Green
 	3 = Blue
 	4 = Yellow
 	*/
-	int pos1 = 0;
-	int pos2 = 0;
-	int pos3 = 0;
-	int pos4 = 0;
+	int pos1 = 1;
+	int pos2 = 1;
+	int pos3 = 1;
+	int pos4 = 1;
+	
 	static HANDLE hconsole;
 
 	static bool isTrap(int position) {
