@@ -62,7 +62,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			for (int i = 0; i < 10; i++)
 			{
 				challenger.ForceMovement(1);
-				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()))
+				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()) && !(board.isTrap(challenger.GetPosition())))
 				{
 					int C1 = 13; //colour1
 					int C2 = 16; //colour2
@@ -76,13 +76,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Green") C2 = 2;
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Blue") C2 = 1;
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Yellow") C2 = 6;
-					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
-					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-					SetConsoleTextAttribute(Board::hconsole, 14);
+					SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(board.hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(board.hconsole, 14);
 
 					std::cout << "Enter y for yes, anything else for no.                                        \n";
 					std::cin >> ans;
-					SetConsoleTextAttribute(Board::hconsole, 15);
+					SetConsoleTextAttribute(board.hconsole, 15);
 					if (ans == 'Y' || ans == 'y')
 					{
 						int other_element;
@@ -117,7 +117,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			for (int i = 0; i < 5; i++)
 			{
 				challenger.ForceMovement(1);
-				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()))
+				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()) && !(board.isTrap(challenger.GetPosition())))
 				{
 					int C1 = 13; //colour1
 					int C2 = 16; //colour2
@@ -131,13 +131,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Green") C2 = 2;
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Blue") C2 = 1;
 					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Yellow") C2 = 6;
-					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
-					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-					SetConsoleTextAttribute(Board::hconsole, 14);
+					SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(board.hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(board.hconsole, 14);
 
 					std::cout << "Enter y for yes, anything else for no.                                        \n";
 					std::cin >> ans;
-					SetConsoleTextAttribute(Board::hconsole, 15);
+					SetConsoleTextAttribute(board.hconsole, 15);
 					if (ans == 'Y' || ans == 'y')
 					{
 						int other_element;
@@ -174,7 +174,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			for (int i = 0; i < 10; i++)
 			{
 				defender.ForceMovement(1);
-				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()))
+				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()) && !(board.isTrap(defender.GetPosition())))
 				{
 					int C1 = 13; //colour1
 					int C2 = 16; //colour2
@@ -188,13 +188,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Green") C2 = 2;
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Blue") C2 = 1;
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Yellow") C2 = 6;
-					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
-					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-					SetConsoleTextAttribute(Board::hconsole, 14);
+					SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(board.hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(board.hconsole, 14);
 
 					std::cout << "Enter y for yes, anything else for no.                                        \n";
 					std::cin >> ans;
-					SetConsoleTextAttribute(Board::hconsole, 15);
+					SetConsoleTextAttribute(board.hconsole, 15);
 					if (ans == 'Y' || ans == 'y')
 					{
 						int other_element;
@@ -226,7 +226,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			for (int i = 0; i < 5; i++)
 			{
 				defender.ForceMovement(1);
-				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()))
+				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()) && !(board.isTrap(defender.GetPosition())))
 				{
 					int C1 = 13; //colour1
 					int C2 = 16; //colour2
@@ -240,13 +240,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Green") C2 = 2;
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Blue") C2 = 1;
 					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Yellow") C2 = 6;
-					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
-					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-					SetConsoleTextAttribute(Board::hconsole, 14);
+					SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(board.hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(board.hconsole, 14);
 
 					std::cout << "Enter y for yes, anything else for no.                                        \n";
 					std::cin >> ans;
-					SetConsoleTextAttribute(Board::hconsole, 15);
+					SetConsoleTextAttribute(board.hconsole, 15);
 					if (ans == 'Y' || ans == 'y')
 					{
 						int other_element;
@@ -306,13 +306,13 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Green") C2 = 2;
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Blue") C2 = 1;
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Yellow") C2 = 6;
-			SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << players[pnum].p_colour(player_num); SetConsoleTextAttribute(Board::hconsole, 11);
-			std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
-			SetConsoleTextAttribute(Board::hconsole, 14);
+			SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << players[pnum].p_colour(player_num); SetConsoleTextAttribute(board.hconsole, 11);
+			std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+			SetConsoleTextAttribute(board.hconsole, 14);
 
 			std::cout << "Enter y for yes, anything else for no.                                        \n";
 			std::cin >> ans;
-			SetConsoleTextAttribute(Board::hconsole, 15);
+			SetConsoleTextAttribute(board.hconsole, 15);
 			if (ans == 'Y' || ans == 'y')
 			{
 				int other_element;
@@ -331,20 +331,20 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 		}
 		else if (board.isTrap(players[pnum].GetPosition()))
 		{
-			std::cout << "Can't sabotage, other player is on trap\n";
+			std::cout << "Can't sabotage, this is a trap\n";
 		}
 	}
 	if (board.isTrap(players[pnum].GetPosition()))//is this position a trap
 	{
-		SetConsoleTextAttribute(Board::hconsole, 12);	std::cout << "Landed on a trap!                                        \n                                                                                \n                                                                                \n";
+		SetConsoleTextAttribute(board.hconsole, 12);	std::cout << "Landed on a trap!                                        \n                                                                                \n                                                                                \n";
 		players[pnum].SetTrapped(true);
-		SetConsoleTextAttribute(Board::hconsole, 15);
+		SetConsoleTextAttribute(board.hconsole, 15);
 	}
 	if (board.isBoost(players[pnum].GetPosition()))//is this position a boost
 	{
-		SetConsoleTextAttribute(Board::hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
+		SetConsoleTextAttribute(board.hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
 		players[pnum].ForceBoost(true);
-		SetConsoleTextAttribute(Board::hconsole, 15);
+		SetConsoleTextAttribute(board.hconsole, 15);
 	}
 	//doesnt go past 100
 	if (players[pnum].GetPosition() > 100)
@@ -393,6 +393,8 @@ int main()
 	player2.InitPlayer(2, 0);
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
+
+
 	players.push_back(player1);
 	players.push_back(player2);
 	players.push_back(player3);
@@ -408,7 +410,7 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
-			Board::resetCur(0, 0);
+			//theBoard.resetCur(0, 0);
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
@@ -417,13 +419,13 @@ int main()
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
 
-			Board::resetCur(0, 38);
-			SetConsoleTextAttribute(Board::hconsole, 15);
+			//theBoard.resetCur(0, 38);
+			SetConsoleTextAttribute(theBoard.hconsole, 15);
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn.\n\n";
 			//roll dice
 			if (players[i].isTrapped())
 			{
-				SetConsoleTextAttribute(Board::hconsole, 4);	std::cout << "\tSorry, you're on a trap!\n";
+				SetConsoleTextAttribute(theBoard.hconsole, 4);	std::cout << "\tSorry, you're on a trap!\n";
 			}
 			else
 			{
