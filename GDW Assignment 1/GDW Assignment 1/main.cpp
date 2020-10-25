@@ -58,7 +58,48 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		if (defender.isBoost()) {
 			
 			//MovementUpdate(players, ci, 10, board);
-			challenger.ForceMovement(10);
+			//challenger.ForceMovement(10);
+			for (int i = 0; i < 10; i++)
+			{
+				challenger.ForceMovement(1);
+				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()))
+				{
+					int C1 = 13; //colour1
+					int C2 = 16; //colour2
+					char ans;
+					if (challenger.p_colour(challenger.GetNumber()) == "Red") C1 = 4;
+					if (challenger.p_colour(challenger.GetNumber()) == "Green") C1 = 2;
+					if (challenger.p_colour(challenger.GetNumber()) == "Blue") C1 = 1;
+					if (challenger.p_colour(challenger.GetNumber()) == "Yellow") C1 = 6;
+
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Red") C2 = 4;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Green") C2 = 2;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Blue") C2 = 1;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Yellow") C2 = 6;
+					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(Board::hconsole, 14);
+
+					std::cout << "Enter y for yes, anything else for no.                                        \n";
+					std::cin >> ans;
+					SetConsoleTextAttribute(Board::hconsole, 15);
+					if (ans == 'Y' || ans == 'y')
+					{
+						int other_element;
+						for (int i = 0; i < players.size(); i++)
+						{
+							if (players[i].GetNumber() == board.getPlayer(challenger.GetPosition(), challenger.GetNumber()))
+							{
+								other_element = i;
+								break;
+							}
+						}
+						BattleSystem(players, challenger, players[other_element], ci, other_element, board);
+						break;
+					}
+				}
+			}
+
 			MovementUpdate(players, ci, 0, board);
 			defender.ForceBoost(false);
 
@@ -72,7 +113,47 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		else {
 			
 			//MovementUpdate(players, ci, 5, board);
-			challenger.ForceMovement(5);
+			//challenger.ForceMovement(5);
+			for (int i = 0; i < 5; i++)
+			{
+				challenger.ForceMovement(1);
+				if (board.isOccupied(challenger.GetNumber(), challenger.GetPosition()))
+				{
+					int C1 = 13; //colour1
+					int C2 = 16; //colour2
+					char ans;
+					if (challenger.p_colour(challenger.GetNumber()) == "Red") C1 = 4;
+					if (challenger.p_colour(challenger.GetNumber()) == "Green") C1 = 2;
+					if (challenger.p_colour(challenger.GetNumber()) == "Blue") C1 = 1;
+					if (challenger.p_colour(challenger.GetNumber()) == "Yellow") C1 = 6;
+
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Red") C2 = 4;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Green") C2 = 2;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Blue") C2 = 1;
+					if (challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())) == "Yellow") C2 = 6;
+					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << challenger.p_colour(challenger.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << challenger.p_colour(board.getPlayer(challenger.GetPosition(), challenger.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(Board::hconsole, 14);
+
+					std::cout << "Enter y for yes, anything else for no.                                        \n";
+					std::cin >> ans;
+					SetConsoleTextAttribute(Board::hconsole, 15);
+					if (ans == 'Y' || ans == 'y')
+					{
+						int other_element;
+						for (int i = 0; i < players.size(); i++)
+						{
+							if (players[i].GetNumber() == board.getPlayer(challenger.GetPosition(), challenger.GetNumber()))
+							{
+								other_element = i;
+								break;
+							}
+						}
+						BattleSystem(players, challenger, players[other_element], ci, other_element, board);
+						break;
+					}
+				}
+			}
 			MovementUpdate(players, ci, 0, board);
 			defender.ForceMovement(-(Challenger_die - Defender_die));
 			MovementUpdate(players, di, 0, board);
@@ -89,7 +170,47 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		//landed on boost
 		if (defender.isBoost()) {
 			//MovementUpdate(players, di, 10, board);
-			defender.ForceMovement(10);
+			//defender.ForceMovement(10);
+			for (int i = 0; i < 10; i++)
+			{
+				defender.ForceMovement(1);
+				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()))
+				{
+					int C1 = 13; //colour1
+					int C2 = 16; //colour2
+					char ans;
+					if (defender.p_colour(defender.GetNumber()) == "Red") C1 = 4;
+					if (defender.p_colour(defender.GetNumber()) == "Green") C1 = 2;
+					if (defender.p_colour(defender.GetNumber()) == "Blue") C1 = 1;
+					if (defender.p_colour(defender.GetNumber()) == "Yellow") C1 = 6;
+
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Red") C2 = 4;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Green") C2 = 2;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Blue") C2 = 1;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Yellow") C2 = 6;
+					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(Board::hconsole, 14);
+
+					std::cout << "Enter y for yes, anything else for no.                                        \n";
+					std::cin >> ans;
+					SetConsoleTextAttribute(Board::hconsole, 15);
+					if (ans == 'Y' || ans == 'y')
+					{
+						int other_element;
+						for (int i = 0; i < players.size(); i++)
+						{
+							if (players[i].GetNumber() == board.getPlayer(defender.GetPosition(), defender.GetNumber()))
+							{
+								other_element = i;
+								break;
+							}
+						}
+						BattleSystem(players, defender, players[other_element], ci, other_element, board);
+						break;
+					}
+				}
+			}
 			MovementUpdate(players, di, 0, board);
 			challenger.ForceBoost(false);
 
@@ -100,9 +221,48 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		}
 		//normal square
 		else {
-			std::cout << di << std::endl;
 			//MovementUpdate(players, di, 5, board);
-			defender.ForceMovement(5);
+			//defender.ForceMovement(5);
+			for (int i = 0; i < 5; i++)
+			{
+				defender.ForceMovement(1);
+				if (board.isOccupied(defender.GetNumber(), defender.GetPosition()))
+				{
+					int C1 = 13; //colour1
+					int C2 = 16; //colour2
+					char ans;
+					if (defender.p_colour(defender.GetNumber()) == "Red") C1 = 4;
+					if (defender.p_colour(defender.GetNumber()) == "Green") C1 = 2;
+					if (defender.p_colour(defender.GetNumber()) == "Blue") C1 = 1;
+					if (defender.p_colour(defender.GetNumber()) == "Yellow") C1 = 6;
+
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Red") C2 = 4;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Green") C2 = 2;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Blue") C2 = 1;
+					if (defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())) == "Yellow") C2 = 6;
+					SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << defender.p_colour(defender.GetNumber()); SetConsoleTextAttribute(Board::hconsole, 11);
+					std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << defender.p_colour(board.getPlayer(defender.GetPosition(), defender.GetNumber())); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+					SetConsoleTextAttribute(Board::hconsole, 14);
+
+					std::cout << "Enter y for yes, anything else for no.                                        \n";
+					std::cin >> ans;
+					SetConsoleTextAttribute(Board::hconsole, 15);
+					if (ans == 'Y' || ans == 'y')
+					{
+						int other_element;
+						for (int i = 0; i < players.size(); i++)
+						{
+							if (players[i].GetNumber() == board.getPlayer(defender.GetPosition(), defender.GetNumber()))
+							{
+								other_element = i;
+								break;
+							}
+						}
+						BattleSystem(players, defender, players[other_element], ci, other_element, board);
+						break;
+					}
+				}
+			}
 			MovementUpdate(players, di, 0, board);
 			challenger.ForceMovement(-(Defender_die - Challenger_die));
 			MovementUpdate(players, ci, 0, board);
@@ -131,6 +291,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 	for (int i = 0; i < roll; i++)
 	{
 		players[pnum].ForceMovement(1);
+		//cant battle on trap square
 		if (board.isOccupied(players[pnum].GetPosition(), player_num) && !(board.isTrap(players[pnum].GetPosition())))
 		{
 			int C1 = 13; //colour1
@@ -167,6 +328,10 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 				break;
 			}
 
+		}
+		else if (board.isTrap(players[pnum].GetPosition()))
+		{
+			std::cout << "Can't sabotage, other player is on trap\n";
 		}
 	}
 	if (board.isTrap(players[pnum].GetPosition()))//is this position a trap
