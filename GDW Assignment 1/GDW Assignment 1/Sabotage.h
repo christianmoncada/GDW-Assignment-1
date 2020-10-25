@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #pragma once
 {
 public:
@@ -9,3 +10,5 @@ public:
 	int moveBack(position -2);
 	int moveForward(position + 5);
 }
+=======
+>>>>>>> main

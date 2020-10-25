@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "Sabotage.h"
 #include "Player.h"
 #include "Board.h"
@@ -8,3 +9,5 @@ for (int i(2); i < playercount; ++i) {
         std::cout << "Player " << (int number) << " and Player " << (int number) << " are on the same position.";
     }
 }
+=======
+>>>>>>> main

@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Game.h"
 #include "Board.h"
 
 class Player
@@ -16,12 +15,16 @@ public:
 
 
 	void ForceMovement(int n);
+	void SetPos(int n);
 	bool isTrapped();
-	void MovementUpdate(int diceroll, Board& bruh);
+	//void MovementUpdate(int diceroll, Board& bruh);
 	int rollDice();
 	static std::string p_colour(int p_num);
 	int GetPosition();
 	int GetNumber();
+	bool isBoost();
+	void ForceBoost(bool val);
+	void SetTrapped(bool val);
 private:
 	int p_num = 0;
 	int p_pos = 0;

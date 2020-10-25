@@ -1,5 +1,6 @@
 #include "Board.h"
 #include "Game.h"
+
 HANDLE Board::hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
 void Board::UpdateBoard(int pos1, int pos2, int pos3, int pos4) {
 	int y = -5, x = 0;
@@ -70,7 +71,7 @@ void Board::UpdateBoard(int pos1, int pos2, int pos3, int pos4) {
 
 	//Board::resetCur(0, 0);
 	//Board::resetCur(8, -8);
-	Board::outRed(x1, y1);
+	//Board::outRed(x1, y1);
 	//Board::outGreen(x2, y2);
 	//Board::outBlue(x3, y3);
 	//Board::outYellow(x4, y4);
@@ -238,8 +239,8 @@ void Board::outRed(int x, int y)
 	SetConsoleTextAttribute(hconsole, 79);
 	Board::resetCur(x, y); 
 	std::cout << " R";
-	std::cout << "x1= " << x << " ";
-	std::cout << "y1= " << y << "\n";
+	//std::cout << "x1= " << x << " ";
+	//std::cout << "y1= " << y << "\n";
 }
 void Board::outGreen(int x, int y)
 {
@@ -257,4 +258,3 @@ void Board::outYellow(int x, int y)
 	SetConsoleTextAttribute(hconsole, 224);
 	Board::resetCur(x, y); std::cout << "Y ";
 }
-
