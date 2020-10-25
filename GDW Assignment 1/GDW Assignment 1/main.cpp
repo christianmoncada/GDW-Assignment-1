@@ -20,7 +20,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		std::cout << "Can't have a battle now, someone is trapped\n";
 		return;
 	}
-
+	defender.ForceBoost(false);
+	challenger.ForceBoost(false);
 
 	//Rolls the Battle Dics
 
@@ -56,8 +57,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 	if (Challenger_die > Defender_die) {
 		//landed on boost square
 		if (defender.isBoost()) {
-			defender.ForceBoost(false);
-			challenger.ForceBoost(false);
+			
 			
 			//MovementUpdate(players, ci, 10, board);
 			challenger.ForceMovement(10);
@@ -65,14 +65,14 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			defender.ForceBoost(false);
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
 
 		}
 		//normal square
-		else {
+		else if (!defender.isBoost()){
 			
 			//MovementUpdate(players, ci, 5, board);
 			challenger.ForceMovement(5);
@@ -82,7 +82,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, di, 0, board);
 			
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -92,21 +92,20 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 	else if (Defender_die > Challenger_die) {
 		//landed on boost
 		if (defender.isBoost()) {
-			defender.ForceBoost(false);
-			challenger.ForceBoost(false);
+			
 			//MovementUpdate(players, di, 10, board);
 			defender.ForceMovement(10);
 			
 			MovementUpdate(players, di, 0, board);
 			challenger.ForceBoost(false);
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage failed " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
 		}
 		//normal square
-		else {
+		else if (!defender.isBoost()) {
 			//MovementUpdate(players, di, 5, board);
 			defender.ForceMovement(5);
 			
@@ -115,7 +114,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage failed " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -139,7 +138,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 	{
 		players[pnum].ForceMovement(1);
 		//cant battle on trap square
-		if (board.isOccupied(players[pnum].GetPosition(), player_num) && !(board.isTrap(players[pnum].GetPosition())))
+		if (board.isOccupied(players[pnum].GetPosition(), player_num) && !(board.isTrap(players[pnum].GetPosition())) && players[pnum].GetPosition() !=100)
 		{
 			int C1 = 13; //colour1
 			int C2 = 16; //colour2
@@ -176,9 +175,9 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 			}
 
 		}
-		else if (board.isTrap(players[pnum].GetPosition()))
+		else if (board.isOccupied(players[pnum].GetPosition(), player_num) && board.isTrap(players[pnum].GetPosition()))
 		{
-			std::cout << "Can't sabotage, this is a trap\n";
+			std::cout << "Can't sabotage, this player is on a trap\n";
 		}
 	}
 	if (board.isTrap(players[pnum].GetPosition()))//is this position a trap
@@ -191,6 +190,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 	{
 		SetConsoleTextAttribute(board.hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
 		players[pnum].ForceBoost(true);
+		//std::cout << players[pnum].isBoost() << std::endl;
 		SetConsoleTextAttribute(board.hconsole, 15);
 	}
 	//doesnt go past 100
