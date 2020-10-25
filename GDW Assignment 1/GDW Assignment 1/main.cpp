@@ -20,7 +20,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		std::cout << "Can't have a battle now, someone is trapped\n";
 		return;
 	}
-
+	defender.ForceBoost(false);
+	challenger.ForceBoost(false);
 
 	//Rolls the Battle Dics
 
@@ -56,8 +57,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 	if (Challenger_die > Defender_die) {
 		//landed on boost square
 		if (defender.isBoost()) {
-			defender.ForceBoost(false);
-			challenger.ForceBoost(false);
+			
 			
 			//MovementUpdate(players, ci, 10, board);
 			challenger.ForceMovement(10);
@@ -92,8 +92,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 	else if (Defender_die > Challenger_die) {
 		//landed on boost
 		if (defender.isBoost()) {
-			defender.ForceBoost(false);
-			challenger.ForceBoost(false);
+			
 			//MovementUpdate(players, di, 10, board);
 			defender.ForceMovement(10);
 			
