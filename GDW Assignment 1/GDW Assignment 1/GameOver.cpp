@@ -3,7 +3,10 @@
 #include "Windows.h"
 #include "Board.h"
 
-void GameOver::gameOver()
+char quitGame = '0';
+bool quitGameLoop = true;
+
+void GameOver::gameOver(int firstPlace, int secondPlace, int thirdPlace, int fourthPlace)
 {
 	//ASCII art
 	SetConsoleTextAttribute(Board::hconsole, 12);
@@ -20,7 +23,7 @@ void GameOver::gameOver()
 	std::cout << "     |   _____   |     \\  \\       /  /   |   _______|   |   ___   \\ \n";
 	std::cout << "     |  |     |  |      \\  \\     /  /    |  |_______    |  |   \\   \\ \n";
 	std::cout << "     |  |     |  |       \\  \\   /  /     |   _______|   |  |___/   /\n";
-	std::cout << "     |  |     |  |        \\  \\ /  /      |  |	   |   ___   /\n";
+	std::cout << "     |  |     |  |        \\  \\ /  /      |  |	        |   ___   /\n";
 	std::cout << "     |  |_____|  |         \\  v  /       |  |_______    |  |   \\  \\\n";
 	std::cout << "     |___________|          \\___/        |__________|   |__|    \\__\\\n\n";
 
@@ -36,6 +39,24 @@ void GameOver::gameOver()
 	std::cout << "       /       \\\n";
 	std::cout << "      /_________\\\n";
 	std::cout << "     |           |\n";
-	std::cout << "     |___________|\n";
-	exit(0);
+	std::cout << "     |___________|\n\n";
+	std::cout << "1st. Player " << firstPlace << endl;
+	std::cout << "2nd. Player " << secondPlace << endl;
+	std::cout << "3rd. Player " << thirdPlace << endl;
+	std::cout << "4th. Player " << fourthPlace << endl << endl;
+
+	while (quitGameLoop == true)
+	{
+		cout << "To quit the game type q or Q \n";
+		cin >> quitGame;
+		if (quitGame == 'q' || quitGame == 'Q')
+		{
+			exit(0);
+		}
+		else
+		{
+			cout << "Invalid character, try again \n";
+			quitGameLoop = true;
+		}
+	}
 }
