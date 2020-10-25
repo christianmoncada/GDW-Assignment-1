@@ -372,7 +372,8 @@ int main()
 
 	int roll;
 	Board theBoard;
-	
+	char rollDiceTurnStart = '0';
+	bool startLoop = true;
 	bool gamecontinue = true;
 	char rollDiceTurn;
 	Player winner;
@@ -394,13 +395,96 @@ int main()
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
 
+	int startRoll1;
+	int startRoll2;
+	int startRoll3;
+	int startRoll4;
 
-	players.push_back(player1);
-	players.push_back(player2);
-	players.push_back(player3);
-	players.push_back(player4);
-	
-	
+
+	while (startLoop == true)
+	{
+		while (rollDiceTurnStart != '1')
+		{
+			cout << "To decide turn order, Player 1 roll the dice by typing 1 \n";
+			cin >> rollDiceTurnStart;
+		}
+		roll = player1.rollDice();
+		std::cout << "Player 1 rolled a " << roll << std::endl;
+		startRoll1 = roll;
+		rollDiceTurnStart = '0';
+
+		while (rollDiceTurnStart != '1')
+		{
+			cout << "To decide turn order, Player 2 roll the dice by typing 1 \n";
+			cin >> rollDiceTurnStart;
+		}
+		roll = player1.rollDice();
+		std::cout << "Player 2 rolled a " << roll << std::endl;
+		startRoll2 = roll;
+		rollDiceTurnStart = '0';
+
+		while (rollDiceTurnStart != '1')
+		{
+			cout << "To decide turn order, Player 3 roll the dice by typing 1 \n";
+			cin >> rollDiceTurnStart;
+		}
+		roll = player1.rollDice();
+		std::cout << "Player 3 rolled a " << roll << std::endl;
+		startRoll3 = roll;
+		rollDiceTurnStart = '0';
+
+		while (rollDiceTurnStart != '1')
+		{
+			cout << "To decide turn order, Player 4 roll the dice by typing 1 \n";
+			cin >> rollDiceTurnStart;
+		}
+		roll = player1.rollDice();
+		std::cout << "Player 4 rolled a " << roll << std::endl;
+		startRoll4 = roll;
+		rollDiceTurnStart = '0';
+
+		if (startRoll1 > startRoll2 && startRoll1 > startRoll3 && startRoll1 > startRoll4)
+		{
+			players.push_back(player1);
+			players.push_back(player2);
+			players.push_back(player3);
+			players.push_back(player4);
+			startLoop = false;
+			cout << "The player order is: Player 1, Player 2, Player 3, Player 4 \n";
+		}
+		else if (startRoll2 > startRoll1 && startRoll2 > startRoll3 && startRoll2 > startRoll4)
+		{
+			players.push_back(player2);
+			players.push_back(player3);
+			players.push_back(player4);
+			players.push_back(player1);
+			startLoop = false;
+			cout << "The player order is: Player 2, Player 3, Player 4, Player 1 \n";
+		}
+		else if (startRoll3 > startRoll1 && startRoll3 > startRoll2 && startRoll3 > startRoll4)
+		{
+			players.push_back(player3);
+			players.push_back(player4);
+			players.push_back(player1);
+			players.push_back(player2);
+			startLoop = false;
+			cout << "The player order is: Player 3, Player 4, Player 1, Player 2 \n";
+		}
+		else if (startRoll4 > startRoll1 && startRoll4 > startRoll2 && startRoll4 > startRoll3)
+		{
+			players.push_back(player4);
+			players.push_back(player1);
+			players.push_back(player2);
+			players.push_back(player3);
+			startLoop = false;
+			cout << "The player order is: Player 4, Player 1, Player 2, Player 3 \n";
+		}
+		else
+		{
+			cout << "The highest rollers tied, everyone reroll \n";
+		}
+	}
+
 	int counter = 0;
 	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
 	//game loop
