@@ -4,14 +4,18 @@
 #include "Player.h"
 #include <vector>
 #include "MainMenu.h"
+#include "GameOver.h"
 
 //Board randomName;
 
 int main()
 {
+	MoveWindow(GetConsoleWindow(), 150, 100, 900, 500, true);
 	//start scene here
+
 	MainMenu startMenu;
 	startMenu.mainMenu();
+
 	int roll;
 	Board theBoard;
 	Player player2;
@@ -22,12 +26,12 @@ int main()
 	player2.InitPlayer(2, 0);
 	player3.InitPlayer(3, 0);
 	player4.InitPlayer(4, 0);
-	theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 	bool gamecontinue = true;
-	int rollDiceTurn = 1;
+	char rollDiceTurn;
 	Player winner;
 	Player isSecond;
 	Player isThird;
+	Player DNF;
 	bool hasWon = false;
 	bool second = false;
 	bool third = false;
@@ -41,7 +45,7 @@ int main()
 	players.push_back(player3);
 	players.push_back(player4);
 	int counter = 0;
-
+	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
 	//game loop
 	while (gamecontinue)
 	{
@@ -49,21 +53,28 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
-			Board::resetCur();
+			Board::resetCur(0, 0);
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
+			std::cout << std::string(80, ' ') << "\r\n";
 			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
-			std::cout << "Starting player " << players[i].GetNumber() << "'s turn." << std::endl;
+
+			Board::resetCur(0, 38);
+			SetConsoleTextAttribute(Board::hconsole, 15);
+			std::cout << "Starting player " << players[i].GetNumber() << "'s turn.\n\n";
 			//roll dice
 			if (players[i].isTrapped())
 			{
-				std::cout << "Sorry, you're on a trap!\n";
+				SetConsoleTextAttribute(Board::hconsole, 4);	std::cout << "\tSorry, you're on a trap!\n";
 			}
 			else
 			{
-				while (rollDiceTurn != 1)
+				while (rollDiceTurn != '1')
 				{
-					cout << "To roll the dice type 1 \n";
+					cout << "To roll the dice type 1 \n\n";
 					cin >> rollDiceTurn;
 
 				}
@@ -73,7 +84,7 @@ int main()
 			}
 			//move
 			players[i].MovementUpdate(roll, theBoard);
-			//update board to draw new position
+			
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
@@ -86,32 +97,45 @@ int main()
 					winner = players[i];
 					hasWon = true;
 				}
-				if (hasWon && !second)
+				else if (hasWon && !second)
 				{
 					isSecond = players[i];
 					second = true;
 				}
-				if (hasWon && second && !third)
+				else if (hasWon && second && !third)
 				{
 					isThird = players[i];
 					third = true;
 				}
 				std::cout << "Player " << players[i].GetNumber() << " has finished!" << std::endl;
-				//removes the player from the array and pushes the other members accordingly
-				players.erase(players.begin() + i);
-				//brings the loop back
-				i=-1;
+
 			}
 			//stops early if one person is left
 			if (players.size() <= 1)
 			{
 				break;
 			}
-
+			
 		}
 		//end of one turn
 		counter += 1;
+		
+		for (int i = 0; i < players.size(); i++)
+		{
+			
+			if (players[i].GetPosition() == 100)
+			{
+				players.erase(players.begin() + i);
+				i--;
 
+			}
+			// stops early if one person is left
+			if (players.size() <= 1)
+			{
+				break;
+			}
+		}
+		
 		std::cout << "End of turn " << counter << std::endl;
 		//means there is only one player left
 		if (players.size() <= 1)
@@ -119,11 +143,13 @@ int main()
 			std::cout << "Game has ended.\n";
 			gamecontinue = false;
 			std::cout << "The winner is player " << winner.GetNumber() << std::endl;
-			std::cout << "Second place: " << isSecond.GetNumber() << std::endl;
-			std::cout << "Third place: " << isThird.GetNumber() << std::endl;
-			std::cout << "Last place: " << players[0].GetNumber() << std::endl;
+			std::cout << "Second place: player" << isSecond.GetNumber() << std::endl;
+			std::cout << "Third place: player" << isThird.GetNumber() << std::endl;
+			std::cout << "DNF: player" << players[0].GetNumber() << std::endl;
 		}
 
 	}
 	//create ending screen here
+	GameOver endScreen;
+	endScreen.gameOver();
 }

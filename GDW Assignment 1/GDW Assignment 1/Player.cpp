@@ -1,8 +1,6 @@
 #include "Player.h"
 #include "Board.h"
 
-
-
 Player::Player()
 {
 }
@@ -55,10 +53,24 @@ void Player::MovementUpdate(int dice, Board& bruh)
 		p_pos+=1;
 		if (bruh.isOccupied(p_pos, p_num))
 		{
+			int C1 = 13; //colour1
+			int C2 = 16; //colour2
 			char ans;
-			cout << "Does player " << p_colour(p_num) << " want to battle player " << p_colour(bruh.getPlayer(p_pos, p_num)) <<"?" << endl;
-			cout << "Enter y for yes, anything else for no." << endl;
-			cin >> ans;
+			if (p_colour(p_num) == "Red" ) C1 = 4;
+			if (p_colour(p_num) == "Green" ) C1 = 2;
+			if (p_colour(p_num) == "Blue" ) C1 = 1;
+			if (p_colour(p_num) == "Yellow" ) C1 = 6;
+
+			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Red" ) C2 = 4;
+			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Green" ) C2 = 2;
+			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Blue" ) C2 = 1;
+			if (p_colour(bruh.getPlayer(p_pos, p_num)) == "Yellow" ) C2 = 6;
+			SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(Board::hconsole, C1); std::cout << p_colour(p_num); SetConsoleTextAttribute(Board::hconsole, 11);
+			std::cout << " want to battle player "; SetConsoleTextAttribute(Board::hconsole, C2); std::cout << p_colour(bruh.getPlayer(p_pos, p_num)); SetConsoleTextAttribute(Board::hconsole, 11); std::cout << "?                                        \n";
+			SetConsoleTextAttribute(Board::hconsole, 14);
+			std::cout << "Enter y for yes, anything else for no.                                        \n";
+			std::cin >> ans;
+			SetConsoleTextAttribute(Board::hconsole, 15);
 			if (ans == 'Y' || ans == 'y')
 			{
 				//Sabotage(self, board.position.player);
@@ -78,21 +90,22 @@ void Player::MovementUpdate(int dice, Board& bruh)
 	
 	if (bruh.isTrap(p_pos))//is this position a trap
 	{
-		std::cout << "Landed on a trap!" << std::endl;
+		SetConsoleTextAttribute(Board::hconsole, 12);	std::cout << "Landed on a trap!                                        \n                                                                                \n                                                                                \n";
 		onTrap = true;
+		SetConsoleTextAttribute(Board::hconsole, 15);
 	}
 	if (bruh.isBoost(p_pos))//is this position a boost
 	{
-		std::cout << "Landed on a boost!" << std::endl;
+		SetConsoleTextAttribute(Board::hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
 		onBoost = true;
+		SetConsoleTextAttribute(Board::hconsole, 15);
 	}
 	//doesnt go past 100
 	if (p_pos > 100)
 	{
 		p_pos = 100;
 	}
-
-
+	
 	//might not be needed
 	bruh.changePos(p_pos, p_num);
 	//board.position(p_pos).addPlayer(self); //let the board know the new position of the player
@@ -126,9 +139,9 @@ int Player::rollDice()
 
 std::string Player::p_colour(int p_num)
 {
-	if(p_num == 1) return "Red";
-	if (p_num == 2) return "Green";
-	if (p_num == 3) return "Blue";
-	if (p_num == 4) return "Yellow";
+	if(p_num == 1) return "Red";		//SetConsoleTextAttribute(Board::hconsole, 4);
+	if (p_num == 2) return "Green";		//SetConsoleTextAttribute(Board::hconsole, 2); 
+	if (p_num == 3) return "Blue";		//SetConsoleTextAttribute(Board::hconsole, 1);
+	if (p_num == 4) return "Yellow";	//SetConsoleTextAttribute(Board::hconsole, 5); 
 	return "ERROR";
 }
