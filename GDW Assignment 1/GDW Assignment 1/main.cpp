@@ -65,7 +65,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			defender.ForceBoost(false);
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -82,7 +82,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, di, 0, board);
 			
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -100,7 +100,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, di, 0, board);
 			challenger.ForceBoost(false);
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -115,7 +115,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			
 
-			std::cout << " Sabotage was succsesful " << std::endl;
+			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
 			return;
@@ -176,7 +176,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 			}
 
 		}
-		else if (board.isTrap(players[pnum].GetPosition()))
+		else if (board.isOccupied(players[pnum].GetPosition(), player_num) && board.isTrap(players[pnum].GetPosition()))
 		{
 			std::cout << "Can't sabotage, this is a trap\n";
 		}
@@ -191,6 +191,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 	{
 		SetConsoleTextAttribute(board.hconsole, 10);	std::cout << "Landed on a boost!                                        \n                                                                                \n                                                                                \n";
 		players[pnum].ForceBoost(true);
+		//std::cout << players[pnum].isBoost() << std::endl;
 		SetConsoleTextAttribute(board.hconsole, 15);
 	}
 	//doesnt go past 100
