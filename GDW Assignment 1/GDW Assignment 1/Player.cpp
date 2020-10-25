@@ -120,9 +120,9 @@ void Player::SetTrapped(bool val)
 void Player::ForceMovement(int n)
 {
 	//makes sure position isnt negative
-	if (p_pos + n < 0)
+	if (p_pos + n < 1)
 	{
-		p_pos = 0;
+		p_pos = 1;
 		return;
 	}
 	p_pos += n;

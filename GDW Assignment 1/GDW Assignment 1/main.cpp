@@ -125,6 +125,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			return;
 		}
 	}
+	board.changePos(challenger.GetPosition(), challenger.GetNumber());
+	board.changePos(defender.GetPosition(), defender.GetNumber());
 
 }
 
@@ -158,7 +160,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Blue") C2 = 1;
 			if (players[pnum].p_colour(board.getPlayer(players[pnum].GetPosition(), player_num)) == "Yellow") C2 = 6;
 			SetConsoleTextAttribute(board.hconsole, 11); std::cout << "Does player "; SetConsoleTextAttribute(board.hconsole, C1); std::cout << players[pnum].GetNumber(); SetConsoleTextAttribute(board.hconsole, 11);
-			std::cout << " want to battle player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << board.getPlayer(players[pnum].GetPosition(), player_num); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
+			std::cout << " want to sabotage player "; SetConsoleTextAttribute(board.hconsole, C2); std::cout << board.getPlayer(players[pnum].GetPosition(), player_num); SetConsoleTextAttribute(board.hconsole, 11); std::cout << "?                                        \n";
 			SetConsoleTextAttribute(board.hconsole, 14);
 
 			std::cout << "Enter y for yes, anything else for no.                                        \n";
@@ -237,6 +239,7 @@ int main()
 	bool third = false;
 	//determine player order here
 	std::vector<Player> players;
+	std::vector<Player> player_order;
 	//Player players[4] = { player1, player2, player3, player4 };
 	Player player2;
 	Player player3;
@@ -298,36 +301,52 @@ int main()
 		if (startRoll1 > startRoll2 && startRoll1 > startRoll3 && startRoll1 > startRoll4)
 		{
 			players.push_back(player1);
+			player_order.push_back(player1);
 			players.push_back(player2);
+			player_order.push_back(player2);
 			players.push_back(player3);
+			player_order.push_back(player3);
 			players.push_back(player4);
+			player_order.push_back(player4);
 			startLoop = false;
 			cout << "The player order is: Player 1, Player 2, Player 3, Player 4 \n";
 		}
 		else if (startRoll2 > startRoll1 && startRoll2 > startRoll3 && startRoll2 > startRoll4)
 		{
 			players.push_back(player2);
+			player_order.push_back(player2);
 			players.push_back(player3);
+			player_order.push_back(player3);
 			players.push_back(player4);
+			player_order.push_back(player4);
 			players.push_back(player1);
+			player_order.push_back(player1);
 			startLoop = false;
 			cout << "The player order is: Player 2, Player 3, Player 4, Player 1 \n";
 		}
 		else if (startRoll3 > startRoll1 && startRoll3 > startRoll2 && startRoll3 > startRoll4)
 		{
 			players.push_back(player3);
+			player_order.push_back(player3);
 			players.push_back(player4);
+			player_order.push_back(player4);
 			players.push_back(player1);
+			player_order.push_back(player1);
 			players.push_back(player2);
+			player_order.push_back(player2);
 			startLoop = false;
 			cout << "The player order is: Player 3, Player 4, Player 1, Player 2 \n";
 		}
 		else if (startRoll4 > startRoll1 && startRoll4 > startRoll2 && startRoll4 > startRoll3)
 		{
 			players.push_back(player4);
+			player_order.push_back(player4);
 			players.push_back(player1);
+			player_order.push_back(player1);
 			players.push_back(player2);
+			player_order.push_back(player2);
 			players.push_back(player3);
+			player_order.push_back(player3);
 			startLoop = false;
 			cout << "The player order is: Player 4, Player 1, Player 2, Player 3 \n";
 		}
@@ -351,7 +370,9 @@ int main()
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
-			theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
+
+			theBoard.UpdateBoard(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			//theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
 
