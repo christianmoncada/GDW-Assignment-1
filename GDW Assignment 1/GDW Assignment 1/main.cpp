@@ -59,13 +59,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		//landed on boost square
 		if (defender.isBoost()) {
 			
-			
+			challenger.ForceBoost(false);
 			//MovementUpdate(players, ci, 10, board);
 			challenger.ForceMovement(10);
 			MovementUpdate(players, ci, 0, board);
 			//MovementUpdate(players, di, 0, board);
 			defender.ForceBoost(false);
-			challenger.ForceBoost(false);
+			
 
 			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
@@ -95,13 +95,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		//landed on boost
 		if (defender.isBoost()) {
 			
-
+			defender.ForceBoost(false);
 			//MovementUpdate(players, di, 10, board);
 			defender.ForceMovement(10);
 			
 			MovementUpdate(players, di, 0, board);
 			//MovementUpdate(players, ci, 0, board);
-			defender.ForceBoost(false);
+			
 			challenger.ForceBoost(false);
 
 			std::cout << " Sabotage failed " << std::endl;
