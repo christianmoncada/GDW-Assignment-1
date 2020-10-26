@@ -358,6 +358,8 @@ int main()
 
 	int counter = 0;
 	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
+	bool nextTurn = false;
+	char indicator = 0;
 	//game loop
 	while (gamecontinue)
 	{
@@ -434,6 +436,18 @@ int main()
 		}
 		//end of one turn
 		counter += 1;
+		indicator = 0;
+		while (!nextTurn)
+		{
+			std::cout << "\nType 1 to go to the next turn" << std::endl;
+			cin >> indicator;
+			if (indicator == '1')
+			{
+				nextTurn = true;
+			}
+		}
+		nextTurn = false;
+
 		
 		for (int i = 0; i < players.size(); i++)
 		{
