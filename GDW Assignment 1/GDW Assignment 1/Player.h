@@ -25,7 +25,7 @@ public:
 	bool isBoost();
 	void ForceBoost(bool val);
 	void SetTrapped(bool val);
-private:
+	//private: 
 	int p_num = 0;
 	int p_pos = 0;
 	bool onTrap = false;
