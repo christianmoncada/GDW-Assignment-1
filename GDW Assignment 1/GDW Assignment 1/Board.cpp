@@ -69,8 +69,8 @@ void Board::UpdateBoard(int pos1, int pos2, int pos3, int pos4) {
 	//Board::resetCur(x, y - 41); std::cout << std::string(80, ' ') << "\r\n";
 	//Board::resetCur(x, y - 42); std::cout << std::string(80, ' ') << "\r\n";
 
-	//Board::resetCur(0, 0);
-	//Board::resetCur(8, -8);
+	Board::resetCur(0, 0);
+	Board::resetCur(8, -8);
 	//Board::outRed(x1, y1);
 	//Board::outGreen(x2, y2);
 	//Board::outBlue(x3, y3);

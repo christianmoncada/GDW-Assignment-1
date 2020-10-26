@@ -367,7 +367,7 @@ int main()
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
-			//theBoard.resetCur(0, 0);
+			theBoard.resetCur(0, 0);
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
 			std::cout << std::string(80, ' ') << "\r\n";
@@ -378,7 +378,7 @@ int main()
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
 
-			//theBoard.resetCur(0, 38);
+			theBoard.resetCur(0, 38);
 			SetConsoleTextAttribute(theBoard.hconsole, 15);
 			std::cout << "Starting player " << players[i].GetNumber() << "'s turn.\n\n";
 			//roll dice
