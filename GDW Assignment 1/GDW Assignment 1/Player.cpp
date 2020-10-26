@@ -211,7 +211,7 @@ bool Player::isTrapped()
 int Player::rollDice()
 {
 	int diceroll = 0;
-	srand(time(0));
+	
 	if (onBoost)
 	{
 		for (int i = 0; i < 2; i++)

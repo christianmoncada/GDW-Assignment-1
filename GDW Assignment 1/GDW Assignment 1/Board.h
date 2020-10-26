@@ -8,6 +8,7 @@ class Board {
 public:
 	
 	void UpdateBoard(int pos1 = 1, int pos2 = 1, int pos3 = 1, int pos4 = 1);
+	void UpdatePlayers(int pos1 = 1, int pos2 = 1, int pos3 = 1, int pos4 = 1);
 	static void resetCur(int y = -5, int x = 0);
 	void outRed(int x, int y);
 	void outGreen(int x, int y);

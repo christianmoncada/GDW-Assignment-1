@@ -34,7 +34,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			cin >> rollDiceTurn;
 
 		}
-		srand(time(0));
+		
 		Challenger_die = (int)(1 + rand() % 6);
 		rollDiceTurn = 0;
 		while (rollDiceTurn != '1')
@@ -43,7 +43,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			cin >> rollDiceTurn;
 
 		}
-		srand(time(0));
+		
 		Defender_die = (int)(1 + rand() % 6);
 		rollDiceTurn = 0;
 
@@ -218,6 +218,7 @@ void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& boa
 
 int main()
 {
+	srand(time(0));
 	MoveWindow(GetConsoleWindow(), 150, 100, 900, 500, true);
 	//start scene here
 
@@ -254,7 +255,7 @@ int main()
 	int startRoll2;
 	int startRoll3;
 	int startRoll4;
-
+	
 
 	while (startLoop == true)
 	{
@@ -357,23 +358,29 @@ int main()
 	}
 
 	int counter = 0;
-	MoveWindow(GetConsoleWindow(), 150, 100, 780, 800, true);
+	MoveWindow(GetConsoleWindow(), 150, 100, 800, 950, true);
 	bool nextTurn = false;
 	char indicator = 0;
 	//game loop
 	while (gamecontinue)
 	{
-		
 		//repeats actions 4 times for each player
 		for (int i = 0; i < players.size(); i++)
 		{
 			theBoard.resetCur(0, 0);
-			std::cout << std::string(80, ' ') << "\r\n";
-			std::cout << std::string(80, ' ') << "\r\n";
-			std::cout << std::string(80, ' ') << "\r\n";
-			std::cout << std::string(80, ' ') << "\r\n";
+			for (int j = 0; j < 120; j++) std::cout << std::string(85, ' ') << "\n";
+			theBoard.resetCur(0, 5);
 
-			theBoard.UpdateBoard(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			for (int j = 0; j < player_order.size(); j++) {
+				for (int k = 0; k < players.size(); k++) {
+					if (players[k].GetNumber() - 1 == j) {
+						player_order[j].SetPos(players[k].GetPosition());
+						break;
+					}
+				}
+			}
+			theBoard.UpdateBoard();//(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
 			//theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
 			roll = 0; //resets roll each turn
@@ -390,8 +397,8 @@ int main()
 			{
 				while (rollDiceTurn != '1')
 				{
-					cout << "To roll the dice type 1 \n\n";
-					cin >> rollDiceTurn;
+					cout << "To roll the dice type 1 \n";
+					SetConsoleTextAttribute(theBoard.hconsole, 7); cin >> rollDiceTurn;
 
 				}
 				roll = players[i].rollDice();
@@ -432,21 +439,20 @@ int main()
 			{
 				break;
 			}
-			
-		}
-		//end of one turn
-		counter += 1;
-		indicator = 0;
-		while (!nextTurn)
-		{
-			std::cout << "\nType 1 to go to the next turn" << std::endl;
-			cin >> indicator;
-			if (indicator == '1')
+			while (!nextTurn)
 			{
-				nextTurn = true;
+				std::cout << "\nType 1 to go to the next turn" << std::endl;
+				cin >> indicator;
+				if (indicator == '1')
+				{
+					nextTurn = true;
+				}
 			}
-		}
-		nextTurn = false;
+			indicator = 0;
+			nextTurn = false;
+		}										//end of one turn
+		counter += 1;
+
 
 		
 		for (int i = 0; i < players.size(); i++)
@@ -476,7 +482,6 @@ int main()
 			// std::cout << "Third place: Player" << isThird.GetNumber() << std::endl;
 			// std::cout << "DNF: Player" << players[0].GetNumber() << std::endl;
 		}
-
 	}
 	//create ending screen here
 	GameOver endScreen;
