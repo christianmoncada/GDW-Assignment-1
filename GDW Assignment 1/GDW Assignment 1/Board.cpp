@@ -217,7 +217,6 @@ void Board::changePos(int pos, int player)
 			pos3 = pos;
 		case 4:
 			pos4 = pos;
-
 	}
 
 }
@@ -232,7 +231,7 @@ void Board::outRed(int x, int y)
 {
 	Board::resetCur(x, y); 
 	SetConsoleTextAttribute(hconsole, 79);
-	std::cout << " R";
+	std::cout << " 1";
 	//std::cout << "x1= " << x << " ";
 	//std::cout << "y1= " << y << "\n";
 }
@@ -240,15 +239,15 @@ void Board::outGreen(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 47);
 	Board::resetCur(x, y); 
-	std::cout << "G ";
+	std::cout << "2 ";
 }
 void Board::outBlue(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 31);
-	Board::resetCur(x, y); std::cout << " B";
+	Board::resetCur(x, y); std::cout << " 3";
 }
 void Board::outYellow(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 224);
-	Board::resetCur(x, y); std::cout << "Y ";
+	Board::resetCur(x, y); std::cout << "4 ";
 }

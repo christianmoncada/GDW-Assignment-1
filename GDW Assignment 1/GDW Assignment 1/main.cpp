@@ -379,7 +379,7 @@ int main()
 					}
 				}
 			}
-			theBoard.UpdateBoard();//(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			theBoard.UpdateBoard();
 			theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
 			//theBoard.UpdateBoard(player1.GetPosition(), player2.GetPosition(), player3.GetPosition(), player4.GetPosition());
 			rollDiceTurn = 0;
@@ -408,7 +408,9 @@ int main()
 			//move
 			MovementUpdate(players, i,roll, theBoard);
 			//players[i].MovementUpdate(roll, theBoard);
-			
+			//theBoard.resetCur(0, 5);
+			//theBoard.UpdateBoard();
+			//theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
