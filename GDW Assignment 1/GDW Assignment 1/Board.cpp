@@ -39,13 +39,13 @@ void Board::UpdateBoard(int pos1, int pos2, int pos3, int pos4) {
 	Board::resetCur(x, y - 32);	SetConsoleTextAttribute(hconsole, 2); std::cout << "        #"; SetConsoleTextAttribute(hconsole, 2); std::cout << "########################################################################"; SetConsoleTextAttribute(hconsole, 2); std::cout << "#           \n";
 
 	SetConsoleTextAttribute(hconsole, 15);
-	Board::resetCur(x, y - 33); std::cout << std::string(80, ' ') << "\r\n";
+	/*Board::resetCur(x, y - 33); std::cout << std::string(80, ' ') << "\r\n";
 	Board::resetCur(x, y - 34); std::cout << std::string(80, ' ') << "\r\n";
 	Board::resetCur(x, y - 35); std::cout << std::string(80, ' ') << "\r\n";
 	Board::resetCur(x, y - 36); std::cout << std::string(80, ' ') << "\r\n";
 	Board::resetCur(x, y - 37); std::cout << std::string(80, ' ') << "\r\n";
 	Board::resetCur(x, y - 38); std::cout << std::string(80, ' ') << "\r\n";
-	Board::resetCur(x, y - 39); std::cout << std::string(80, ' ') << "\r\n";
+	Board::resetCur(x, y - 39); std::cout << std::string(80, ' ') << "\r\n";*/
 	//Board::resetCur(x, y - 40); std::cout << std::string(80, ' ') << "\r\n";
 	//Board::resetCur(x, y - 41); std::cout << std::string(80, ' ') << "\r\n";
 	//Board::resetCur(x, y - 42); std::cout << std::string(80, ' ') << "\r\n";
@@ -218,7 +218,7 @@ void Board::changePos(int pos, int player)
 		case 4:
 			pos4 = pos;
 	}
-
+	
 }
 void Board::resetCur(int x, int y)
 {
@@ -229,25 +229,25 @@ void Board::resetCur(int x, int y)
 
 void Board::outRed(int x, int y)
 {
-	Board::resetCur(x, y); 
 	SetConsoleTextAttribute(hconsole, 79);
-	std::cout << " 1";
-	//std::cout << "x1= " << x << " ";
-	//std::cout << "y1= " << y << "\n";
+	Board::resetCur(x, y); std::cout << " 1";
+	SetConsoleTextAttribute(hconsole, 7);
 }
 void Board::outGreen(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 47);
-	Board::resetCur(x, y); 
-	std::cout << "2 ";
+	Board::resetCur(x, y); std::cout << "2 ";
+	SetConsoleTextAttribute(hconsole, 7);
 }
 void Board::outBlue(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 31);
 	Board::resetCur(x, y); std::cout << " 3";
+	SetConsoleTextAttribute(hconsole, 7);
 }
 void Board::outYellow(int x, int y)
 {
 	SetConsoleTextAttribute(hconsole, 224);
 	Board::resetCur(x, y); std::cout << "4 ";
+	SetConsoleTextAttribute(hconsole, 7);
 }

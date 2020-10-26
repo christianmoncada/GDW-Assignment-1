@@ -452,12 +452,17 @@ int main()
 			//move
 			MovementUpdate(players, i,roll, theBoard);
 			//players[i].MovementUpdate(roll, theBoard);
-			//theBoard.resetCur(0, 5);
-			//theBoard.UpdateBoard();
-			//theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			/*theBoard.resetCur(0, 5);
+			theBoard.UpdateBoard();
+			theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			theBoard.resetCur(0, 44);*/
 
 			std::cout << "Player " << players[i].GetNumber() << " position: " << players[i].GetPosition() << std::endl;
 
+			/*theBoard.resetCur(0, 5);
+			theBoard.UpdateBoard();
+			theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
+			theBoard.resetCur(0, 46);*/
 			//add check if the player's position is greater than or equal to 100, if it is, then remove that player from the array
 			//and if they are the first person to 100, set them as the winner. Ex make winner = the player that won, and set hasWon = true so we know there is already a winner
 			if (players[i].GetPosition() == 100)
