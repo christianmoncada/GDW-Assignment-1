@@ -60,8 +60,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		if (defender.isBoost()) {
 			
 			challenger.ForceBoost(false);
-			MovementUpdate(players, ci, 10, board);
-			//challenger.ForceMovement(10);
+			//MovementUpdate(players, ci, 10, board);
+			challenger.ForceMovement(10);
 			//MovementUpdate(players, ci, 0, board);
 			//MovementUpdate(players, di, 0, board);
 			defender.ForceBoost(false);
@@ -86,12 +86,12 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		//normal square
 		else if (!defender.isBoost()){
 			
-			MovementUpdate(players, ci, 5, board);
-			//challenger.ForceMovement(5);
+			//MovementUpdate(players, ci, 5, board);
+			challenger.ForceMovement(5);
 			
 			//MovementUpdate(players, ci, 0, board);
 			defender.ForceMovement(-(Challenger_die - Defender_die));
-			MovementUpdate(players, di, 0, board);
+			//MovementUpdate(players, di, 0, board);
 
 			//doesnt go past 100
 			if (challenger.GetPosition() > 100)
@@ -117,8 +117,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		if (defender.isBoost()) {
 			
 			defender.ForceBoost(false);
-			MovementUpdate(players, di, 10, board);
-			//defender.ForceMovement(10);
+			//MovementUpdate(players, di, 10, board);
+			defender.ForceMovement(10);
 			
 			//MovementUpdate(players, di, 0, board);
 			//MovementUpdate(players, ci, 0, board);
@@ -143,12 +143,12 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 		}
 		//normal square
 		else if (!defender.isBoost()) {
-			MovementUpdate(players, di, 5, board);
-			//defender.ForceMovement(5);
+			//MovementUpdate(players, di, 5, board);
+			defender.ForceMovement(5);
 			
 			//MovementUpdate(players, di, 0, board);
 			challenger.ForceMovement(-(Defender_die - Challenger_die));
-			MovementUpdate(players, ci, 0, board);
+			//MovementUpdate(players, ci, 0, board);
 
 			//doesnt go past 100
 			if (defender.GetPosition() > 100)
@@ -174,6 +174,8 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 	board.changePos(defender.GetPosition(), defender.GetNumber());
 	challenger.SetPos(challenger.GetPosition());
 	defender.SetPos(defender.GetPosition());
+	defender.ForceBoost(false);
+	challenger.ForceBoost(false);
 
 
 	//board.UpdateBoard();
@@ -458,6 +460,8 @@ int main()
 			}
 			//move
 			MovementUpdate(players, i,roll, theBoard);
+			//.UpdateBoard();
+			//theBoard.UpdatePlayers(player_order[0].GetPosition(), player_order[1].GetPosition(), player_order[2].GetPosition(), player_order[3].GetPosition());
 			//players[i].MovementUpdate(roll, theBoard);
 			/*theBoard.resetCur(0, 5);
 			theBoard.UpdateBoard();
