@@ -80,7 +80,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
-			return;
+			//return;
 
 		}
 		//normal square
@@ -108,7 +108,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			std::cout << " Sabotage was successful " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
-			return;
+			//return;
 		}
 	}
 	//defender wins
@@ -139,7 +139,7 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			std::cout << " Sabotage failed " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
-			return;
+			//return;
 		}
 		//normal square
 		else if (!defender.isBoost()) {
@@ -165,12 +165,13 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			std::cout << " Sabotage failed " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
-			return;
+			//return;
 		}
 	}
 	board.changePos(challenger.GetPosition(), challenger.GetNumber());
 	board.changePos(defender.GetPosition(), defender.GetNumber());
-
+	defender.ForceBoost(false);
+	challenger.ForceBoost(false);
 }
 
 void MovementUpdate(std::vector<Player>& players, int pnum, int roll, Board& board)
