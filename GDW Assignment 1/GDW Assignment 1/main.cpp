@@ -356,9 +356,10 @@ int main()
 			cout << "The highest rollers tied, everyone reroll \n";
 		}
 	}
-
+	theBoard.resetCur(0, 0);
+	for (int j = 0; j < 120; j++) std::cout << std::string(96, ' ') << "\n";
 	int counter = 0;
-	MoveWindow(GetConsoleWindow(), 150, 100, 800, 950, true);
+	MoveWindow(GetConsoleWindow(), 150, 100, 810, 950, true);
 	bool nextTurn = false;
 	char indicator = 0;
 	//game loop
@@ -368,7 +369,7 @@ int main()
 		for (int i = 0; i < players.size(); i++)
 		{
 			theBoard.resetCur(0, 0);
-			for (int j = 0; j < 120; j++) std::cout << std::string(85, ' ') << "\n";
+			for (int j = 0; j < 120; j++) std::cout << std::string(96, ' ') << "\n";
 			theBoard.resetCur(0, 5);
 
 			for (int j = 0; j < player_order.size(); j++) {
