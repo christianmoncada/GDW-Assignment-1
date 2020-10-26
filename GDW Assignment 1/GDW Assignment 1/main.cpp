@@ -65,6 +65,16 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			//MovementUpdate(players, di, 0, board);
 			defender.ForceBoost(false);
+			//doesnt go past 100
+			if (challenger.GetPosition() > 100)
+			{
+				challenger.SetPos(100);
+			}
+			//doesnt go behind 0
+			if (defender.GetPosition() < 1)
+			{
+				defender.SetPos(1);
+			}
 			
 
 			std::cout << " Sabotage was successful " << std::endl;
@@ -82,6 +92,17 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, ci, 0, board);
 			defender.ForceMovement(-(Challenger_die - Defender_die));
 			MovementUpdate(players, di, 0, board);
+
+			//doesnt go past 100
+			if (challenger.GetPosition() > 100)
+			{
+				challenger.SetPos(100);
+			}
+			//doesnt go behind 0
+			if (defender.GetPosition() < 1)
+			{
+				defender.SetPos(1);
+			}
 			
 
 			std::cout << " Sabotage was successful " << std::endl;
@@ -104,6 +125,17 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			
 			challenger.ForceBoost(false);
 
+			//doesnt go past 100
+			if (defender.GetPosition() > 100)
+			{
+				defender.SetPos(100);
+			}
+			//doesnt go behind 0
+			if (challenger.GetPosition() < 1)
+			{
+				challenger.SetPos(1);
+			}
+
 			std::cout << " Sabotage failed " << std::endl;
 			std::cout << "Player " << challenger.GetNumber() << "'s new position: " << challenger.GetPosition() << std::endl;
 			std::cout << "Player " << defender.GetNumber() << "'s new position: " << defender.GetPosition() << std::endl;
@@ -117,6 +149,17 @@ void BattleSystem(std::vector<Player> players, Player& challenger, Player& defen
 			MovementUpdate(players, di, 0, board);
 			challenger.ForceMovement(-(Defender_die - Challenger_die));
 			MovementUpdate(players, ci, 0, board);
+
+			//doesnt go past 100
+			if (defender.GetPosition() > 100)
+			{
+				defender.SetPos(100);
+			}
+			//doesnt go behind 0
+			if (challenger.GetPosition() < 1)
+			{
+				challenger.SetPos(1);
+			}
 			
 
 			std::cout << " Sabotage failed " << std::endl;
